@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RhapsodyArchive>
+	<MagicNumber></MagicNumber>
+	<CODE-PAGE>1252</CODE-PAGE>
+	<version>100.840.0</version>
+	<lang>C++</lang>
+	<BuildNo>9841247</BuildNo>
+	
+	<RHAPSODY-MODEL>
+	<ISubsystem type="e">
+			<_id type="a">GUID e8d7b94b-7300-4ff9-9f64-680134db4c5f</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Default</_name>
+			<_modifiedTimeWeak type="a">9.1.2020::6:40:1</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.1.2020::7:32:57</_modifiedTime>
+			<weakCGTime type="a">9.1.2020::6:40:17</weakCGTime>
+			<strongCGTime type="a">1.2.1990::0:0:0</strongCGTime>
+			<_defaultComposite type="s">GUID 41876185-fd03-425a-afd0-6fa9223a4bc9</_defaultComposite>
+			<_eventsBaseID type="a">-1</_eventsBaseID>
+			<_configurationRelatedTime type="a">9.1.2020::6:40:17</_configurationRelatedTime>
+			<AggregatesList type="e">
+				<value>GUID 41876185-fd03-425a-afd0-6fa9223a4bc9</value>
+			</AggregatesList>
+		</ISubsystem>
+		<IClass type="e">
+			<_id type="a">GUID 41876185-fd03-425a-afd0-6fa9223a4bc9</_id>
+			<_myState type="a">40960</_myState>
+			<_name type="a">TopLevel</_name>
+			<_modifiedTimeWeak type="a">9.1.2020::6:40:17</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.1.2020::6:40:17</_modifiedTime>
+			<weakCGTime type="a">9.1.2020::6:40:17</weakCGTime>
+			<strongCGTime type="a">1.2.1990::0:0:0</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<Associations type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</Associations>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		
+	</RHAPSODY-MODEL>
+	<OslcLinks type="c">
+		<IRPYRawContainer type="e">
+			<size type="a">0</size>
+		</IRPYRawContainer>
+	</OslcLinks>
+
+<INCLUDES-RHAPSODY-INDEX>false</INCLUDES-RHAPSODY-INDEX>
+</RhapsodyArchive>
+

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RhapsodyArchive>
+	<MagicNumber></MagicNumber>
+	<CODE-PAGE>1252</CODE-PAGE>
+	<version>100.840.0</version>
+	<lang>C++</lang>
+	<BuildNo>9841247</BuildNo>
+	
+	<RHAPSODY-MODEL>
+	<ISubsystem type="e">
+			<_id type="a">GUID 4dbae057-923e-4722-8871-1e473add4cbf</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">MAN</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\..\..\profiles\profiles\BusinessModelingProfile\BusinessModeling.sbsx</_hfilename>
+							<_hsubsystem type="a">BusinessModeling</_hsubsystem>
+							<_hname type="a">BusinessAnalysisModel</_hname>
+							<_hid type="a">GUID 05eb2d57-970a-4a6d-af77-2bab148f8e57</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.1.2020::5:13:47</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hname type="a">Diagrama de Estructura del Proyecto</_hname>
+					<_hid type="a">GUID 21bf56ad-caa4-49d7-ade9-131d2f0385ba</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">9.1.2020::7:32:57</_modifiedTime>
+			<weakCGTime type="a">9.1.2020::5:13:47</weakCGTime>
+			<strongCGTime type="a">9.1.2020::5:13:47</strongCGTime>
+			<_defaultComposite type="s">GUID 58280867-894c-42d3-b99c-49fb7d5725c0</_defaultComposite>
+			<_eventsBaseID type="a">-1</_eventsBaseID>
+			<_configurationRelatedTime type="a">12.31.1969::19:0:0</_configurationRelatedTime>
+			<AggregatesList type="e">
+				<value>GUID 58280867-894c-42d3-b99c-49fb7d5725c0</value>
+			</AggregatesList>
+		</ISubsystem>
+		<IClass type="e">
+			<_id type="a">GUID 58280867-894c-42d3-b99c-49fb7d5725c0</_id>
+			<_myState type="a">40960</_myState>
+			<_name type="a">TopLevel</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">12.31.1969::19:0:0</_modifiedTime>
+			<weakCGTime type="a">1.2.1990::0:0:0</weakCGTime>
+			<strongCGTime type="a">1.2.1990::0:0:0</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		
+	</RHAPSODY-MODEL>
+	<OslcLinks type="c">
+		<IRPYRawContainer type="e">
+			<size type="a">0</size>
+		</IRPYRawContainer>
+	</OslcLinks>
+
+<INCLUDES-RHAPSODY-INDEX>false</INCLUDES-RHAPSODY-INDEX>
+</RhapsodyArchive>
+

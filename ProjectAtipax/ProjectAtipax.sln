@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32819.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectAtipax", "ProjectAtipax\ProjectAtipax.csproj", "{7086546E-EFF8-4938-810B-93AD7188E4ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7086546E-EFF8-4938-810B-93AD7188E4ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7086546E-EFF8-4938-810B-93AD7188E4ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7086546E-EFF8-4938-810B-93AD7188E4ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7086546E-EFF8-4938-810B-93AD7188E4ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {61D8E0F8-2A91-4632-96F6-FCCAF6B288C8}
+	EndGlobalSection
+EndGlobal

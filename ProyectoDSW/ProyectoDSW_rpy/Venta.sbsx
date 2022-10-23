@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RhapsodyArchive>
+	<MagicNumber></MagicNumber>
+	<CODE-PAGE>1252</CODE-PAGE>
+	<version>100.840.0</version>
+	<lang>C++</lang>
+	<BuildNo>9841247</BuildNo>
+	
+	<RHAPSODY-MODEL>
+	<ISubsystem type="e">
+			<_id type="a">GUID 32ff6e38-17cb-41a7-8c53-eda2a84039c6</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Venta</_name>
+			<_modifiedTimeWeak type="a">6.1.2021::5:42:0</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\MA.sbsx</_hfilename>
+					<_hsubsystem type="a">MA</_hsubsystem>
+					<_hname type="a">Diagrama de Arquitectura de Analisis</_hname>
+					<_hid type="a">GUID 31a9ca0c-05e3-4959-b2ae-06492c63ccc1</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">6.1.2021::6:31:20</_modifiedTime>
+			<_lastID type="a">3</_lastID>
+			<weakCGTime type="a">6.1.2021::5:42:0</weakCGTime>
+			<strongCGTime type="a">6.1.2021::5:42:0</strongCGTime>
+			<_defaultComposite type="s">GUID 8d4c173e-5840-4967-8e69-6be10976aa0f</_defaultComposite>
+			<_eventsBaseID type="a">-1</_eventsBaseID>
+			<_configurationRelatedTime type="a">12.31.1969::19:0:0</_configurationRelatedTime>
+			<AggregatesList type="e">
+				<value>GUID 02b9e383-e443-4f9f-bf79-f47b8b277ee0</value>
+				<value>GUID d8c95bcd-3ce9-4609-bca6-2a04894f474a</value>
+				<value>GUID 52c350af-0736-4a1c-ab23-2c679a375a16</value>
+				<value>GUID 8d4c173e-5840-4967-8e69-6be10976aa0f</value>
+			</AggregatesList>
+		</ISubsystem>
+		<IDependency type="e">
+			<_id type="a">GUID 02b9e383-e443-4f9f-bf79-f47b8b277ee0</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">Hotel</_name>
+			<_modifiedTimeWeak type="a">6.1.2021::5:41:20</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.1.2021::5:41:20</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">ISubsystem</_hm2Class>
+					<_hfilename type="a">.\Hotel.sbsx</_hfilename>
+					<_hname type="a">Hotel</_hname>
+					<_hid type="a">GUID 23e93459-8da5-4da8-a372-34c5dc397b01</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">ISubsystem</_hm2Class>
+					<_hid type="a">GUID 32ff6e38-17cb-41a7-8c53-eda2a84039c6</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
+		<IDependency type="e">
+			<_id type="a">GUID d8c95bcd-3ce9-4609-bca6-2a04894f474a</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">Tour</_name>
+			<_modifiedTimeWeak type="a">6.1.2021::5:41:57</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.1.2021::5:41:57</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">ISubsystem</_hm2Class>
+					<_hfilename type="a">.\Tour.sbsx</_hfilename>
+					<_hname type="a">Tour</_hname>
+					<_hid type="a">GUID 947c2960-bd09-4a92-b335-3c99207b5aac</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">ISubsystem</_hm2Class>
+					<_hid type="a">GUID 32ff6e38-17cb-41a7-8c53-eda2a84039c6</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
+		<IDependency type="e">
+			<_id type="a">GUID 52c350af-0736-4a1c-ab23-2c679a375a16</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">Destino</_name>
+			<_modifiedTimeWeak type="a">6.1.2021::5:42:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.1.2021::5:42:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">ISubsystem</_hm2Class>
+					<_hfilename type="a">.\Destino.sbsx</_hfilename>
+					<_hname type="a">Destino</_hname>
+					<_hid type="a">GUID ce337fe6-826b-4050-b5d2-fec608537991</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">ISubsystem</_hm2Class>
+					<_hid type="a">GUID 32ff6e38-17cb-41a7-8c53-eda2a84039c6</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
+		<IClass type="e">
+			<_id type="a">GUID 8d4c173e-5840-4967-8e69-6be10976aa0f</_id>
+			<_myState type="a">40960</_myState>
+			<_name type="a">TopLevel</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">12.31.1969::19:0:0</_modifiedTime>
+			<weakCGTime type="a">1.2.1990::0:0:0</weakCGTime>
+			<strongCGTime type="a">1.2.1990::0:0:0</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		
+	</RHAPSODY-MODEL>
+	<OslcLinks type="c">
+		<IRPYRawContainer type="e">
+			<size type="a">0</size>
+		</IRPYRawContainer>
+	</OslcLinks>
+
+<INCLUDES-RHAPSODY-INDEX>false</INCLUDES-RHAPSODY-INDEX>
+</RhapsodyArchive>
+

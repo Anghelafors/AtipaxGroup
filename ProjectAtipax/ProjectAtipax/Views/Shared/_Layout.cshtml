@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ProjectAtipax</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ProjectAtipax.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="principal">
+        <header>
+            <nav>
+                <div class="menu">
+                    <a class="menu-item" asp-action="Index" asp-controller="Carreras">Home</a>
+                    <a class="menu-item" asp-action="CT" asp-controller="Carreras">Carreras Tecnicas</a>
+                    <a class="menu-item" asp-action="Beca18" asp-controller="Carreras">Beca 18</a>
+                    <a class="menu-item" asp-action="CL" asp-controller="Carreras">Cursos Libres</a>
+                    <a class="menu-item" asp-action="Intranet" asp-controller="Carreras">Intranet</a>
+                    <a class="menu-item" asp-action="Contacto" asp-controller="Carreras">Contactenos</a>
+                </div>
+            </nav>
+            <img class="logo" src="~/img/f18.jpg" />
+        </header>
+       
+   
+        <footer>
+            <div class="wrapper-row">
+                <!--grilla que divide 4 fila por columna-->
+                <div>Cibertec SAC</div>
+                <div>Direccion El olimpo</div>
+                <div>Telefono: 419-2900</div>
+                <div>Email: cibertec@cibertec.pe</div>
+            </div>
+            <div class="footer-rs">
+                <img class="rs" src="~/imagenes/face.jpg" />
+                <img class="rs" src="~/imagenes/instagram.jpg" />
+                <img class="rs" src="~/imagenes/twitter.jpg" />
+                <img class="rs" src="~/imagenes/pinterest.jpg" />
+            </div>
+        </footer>
+        </div> 
+</body>
+</html>
