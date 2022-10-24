@@ -13,25 +13,22 @@
         <header>
             <nav>
                 <div class="menu">
-                    <a class="menu-item" asp-action="Index" asp-controller="Carreras">Home</a>
-                    <a class="menu-item" asp-action="CT" asp-controller="Carreras">Carreras Tecnicas</a>
-                    <a class="menu-item" asp-action="Beca18" asp-controller="Carreras">Beca 18</a>
-                    <a class="menu-item" asp-action="CL" asp-controller="Carreras">Cursos Libres</a>
-                    <a class="menu-item" asp-action="Intranet" asp-controller="Carreras">Intranet</a>
-                    <a class="menu-item" asp-action="Contacto" asp-controller="Carreras">Contactenos</a>
+                    <a class="menu-item" asp-action="Index" asp-controller="Viajes">Inicio</a>
+                    <a class="menu-item" asp-action="Contacto" asp-controller="Viajes">Contáctenos</a>
+                    <a class="menu-item" asp-action="Destino" asp-controller="Viajes">Escoje tu destino</a>
+                    <a class="menu-item" asp-action="Salir" asp-controller="Viajes">Salir</a>
+                  
                 </div>
             </nav>
-            <img class="logo" src="~/img/f18.jpg" />
+            <img class="fondo" src="~/img/f18.jpg" />
         </header>
-       
+       <section>
+            @RenderBody()
+        </section>
    
         <footer>
             <div class="wrapper-row">
-                <!--grilla que divide 4 fila por columna-->
-                <div>Cibertec SAC</div>
-                <div>Direccion El olimpo</div>
-                <div>Telefono: 419-2900</div>
-                <div>Email: cibertec@cibertec.pe</div>
+                <h3>Copyright © 2022 Atipax Group. Todos los derechos reservados.</h3>
             </div>
             <div class="footer-rs">
                 <img class="rs" src="~/imagenes/face.jpg" />
