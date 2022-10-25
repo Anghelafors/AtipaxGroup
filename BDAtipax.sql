@@ -47,16 +47,20 @@ pass nvarchar(15) not null
 )
 go
 
-/*
-tb_compra
-idCompra
-cantidadPerson
-total
-fechaInicio
-fechaFin
-idHotel
-idTour
-idDestino
-idCliente
+create table tb_compra(
 
-*/
+idCompra char(6) primary key not null,
+cantidadPerson int not null,
+total decimal(10,2) not null,
+fechaInicio date not null,
+fechaFin date not null,
+idHotel char(5) not null,
+idTour char(5) not null,
+idDestino char(5) not null,
+idCliente char(6) not null,
+foreign key(idTour) references tb_tour(idTour),
+foreign key(idHotel) references tb_hotel(idHotel),
+foreign key(idDestino) references tb_destino(idDestino),
+foreign key(idCliente) references tb_cliente(idCliente)
+)
+go
