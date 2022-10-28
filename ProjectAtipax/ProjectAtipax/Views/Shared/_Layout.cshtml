@@ -7,20 +7,27 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ProjectAtipax.styles.css" asp-append-version="true" />
+
 </head>
 <body>
     <div class="principal">
-        <header>
-            <nav>
-                <div class="menu">
-                    <a class="menu-item" asp-action="Index" asp-controller="Viajes">Inicio</a>
-                    <a class="menu-item" asp-action="Contacto" asp-controller="Viajes">Contáctenos</a>
-                    <a class="menu-item" asp-action="Destino" asp-controller="Viajes">Escoje tu destino</a>
-                    <a class="menu-item" asp-action="Salir" asp-controller="Viajes">Salir</a>
-                  
-                </div>
-            </nav>
-            <img class="fondo" src="~/img/f18.jpg" />
+    <header class="headerAtipax">
+
+            <div class="navAtipax">
+                <nav>
+                    <a class="menu-item" asp-action="" asp-controller="Viajes"><img class="logo" src="~/img/Grupo-2 1.png"/></a>
+                        
+                        <a class="menu-item" asp-action="Index" asp-controller="Viajes">Inicio</a>
+                       
+                        <a class="menu-item" asp-action="Contacto" asp-controller="Viajes">Contáctenos</a>
+                     
+                        <a class="menu-item" asp-action="Destino" asp-controller="Viajes">Escoje tu destino</a>
+                       
+                        <a class="menu-item" asp-action="Salir" asp-controller="Viajes">Salir</a>
+  
+                </nav>
+            </div>
+
         </header>
        <section>
             @RenderBody()
@@ -37,6 +44,7 @@
                 <img class="rs" src="~/imagenes/pinterest.jpg" />
             </div>
         </footer>
-        </div> 
+        
+    </div>
 </body>
 </html>
