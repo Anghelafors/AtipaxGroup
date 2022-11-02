@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "EwPzpxfyFFSiCzP8gSu518mLQ3W3l119VTJcGa9xT9o=",
+  "Hash": "sSyuQ7+xoYFbERx68dOHMUaz3Pa5lVfawGOG/DZ21Ac=",
   "Source": "ProjectAtipax",
   "BasePath": "_content/ProjectAtipax",
   "Mode": "Default",
@@ -51,23 +51,6 @@
       "OriginalItemSpec": "C:\\Users\\TOSHIBA\\Desktop\\Project-DSW-Atipax\\ProjectAtipax\\ProjectAtipax\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\ProjectAtipax.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\TOSHIBA\\Desktop\\Project-DSW-Atipax\\ProjectAtipax\\ProjectAtipax\\wwwroot\\css\\menu.css",
-      "SourceId": "ProjectAtipax",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\TOSHIBA\\Desktop\\Project-DSW-Atipax\\ProjectAtipax\\ProjectAtipax\\wwwroot\\",
-      "BasePath": "_content/ProjectAtipax",
-      "RelativePath": "css/menu.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\menu.css"
-    },
-    {
       "Identity": "C:\\Users\\TOSHIBA\\Desktop\\Project-DSW-Atipax\\ProjectAtipax\\ProjectAtipax\\wwwroot\\css\\site.css",
       "SourceId": "ProjectAtipax",
       "SourceType": "Discovered",
@@ -83,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\TOSHIBA\\Desktop\\Project-DSW-Atipax\\ProjectAtipax\\ProjectAtipax\\wwwroot\\css\\styleAtipax.css",
+      "SourceId": "ProjectAtipax",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\TOSHIBA\\Desktop\\Project-DSW-Atipax\\ProjectAtipax\\ProjectAtipax\\wwwroot\\",
+      "BasePath": "_content/ProjectAtipax",
+      "RelativePath": "css/styleAtipax.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\styleAtipax.css"
     },
     {
       "Identity": "C:\\Users\\TOSHIBA\\Desktop\\Project-DSW-Atipax\\ProjectAtipax\\ProjectAtipax\\wwwroot\\favicon.ico",
