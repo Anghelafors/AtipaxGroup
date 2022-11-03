@@ -1,17 +1,20 @@
-﻿namespace ProjectAtipax.Models
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
+namespace ProjectAtipax.Models
 {
     public class Usuario
     {
-        /*idUsu int primary key  identity(1,1) not null,
-usuario nvarchar(13) not null,
-pass nvarchar(15) not null*/
-        public int idUsu { get; set; }
-        public String usuario { get; set; }
-        public String pass { get; set; }
+       
+        public int idUsuario { get; set; }
+        [Display(Name ="Usuario") , Required] public String  usuario { get; set; }
+        [Display(Name = "Contraseña"), Required, StringLength(15)] public String pass { get; set; }
+        public String idRol { get; set; }
         public Usuario()
         {
             usuario= "";
             pass = "";
+            idRol = "";
         }
 
     }
