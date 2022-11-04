@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using ProjectAtipax.Models;
@@ -22,11 +24,7 @@ namespace ProjectAtipax.Controllers
         {
            
 
-         if (!ModelState.IsValid)
-            {
-                ModelState.AddModelError("", "Ingrese Correctamente Usuario y Clave");
-                return View(reg);
-            }
+         
 
             string mensaje = "";
             using (SqlConnection cn = new SqlConnection(_iconfig["ConnectionStrings:cadena"]))
@@ -40,6 +38,7 @@ namespace ProjectAtipax.Controllers
                     cmd.Parameters.AddWithValue("@usu", reg.usuario);
                     cmd.Parameters.AddWithValue("@pass", reg.pass);
                     cmd.ExecuteNonQuery();
+                    return RedirectToAction("Inicio", "Viajes");
 
                 }
 
