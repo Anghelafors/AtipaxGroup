@@ -1,8 +1,8 @@
-drop database if exists BDAtipax
+drop database  BDAtipax
 create database BDAtipax
 use BDAtipax
 
--- use master
+use master
 
 -- tables
 
@@ -31,7 +31,7 @@ insert into tb_usuario values(2,'cliente@gmail.com','cliente',2)
 
 create table tb_tour(
 idTour char(5) primary key not null,
-precio decimal(7,2) not null,
+precio decimal not null,
 descripcion nvarchar(100) not null
 )
 go
@@ -39,7 +39,7 @@ create table tb_hotel(
 idHotel char(5) primary key not null,
 nomHotel nvarchar(20) not null,
 categoria nvarchar(15) not null,
-precioHotel decimal(6,2) not null,
+precioHotel decimal not null,
 descripcion nvarchar(50) not null,
 idTour char(5) not null,
 foreign key(idTour) references tb_tour(idTour)
@@ -105,14 +105,16 @@ create procedure usp_tour_listar
 	select * from tb_tour
 	go
 
-create procedure usp_hotel_listar
-	as
-	select * from tb_hotel
-	go
+create or alter proc usp_hotel_listar
+As
+select h.idHotel, h.nomHotel, h.categoria, h.precioHotel, h.descripcion , t.descripcion
+from tb_hotel h join tb_tour t on h.idTour = t.idTour
+go
 
-create procedure usp_destino_listar
+create or alter procedure usp_destino_listar
 	as
-	select * from tb_destino
+	select d.idDestino, d.pais, d.ciudad, h.nomHotel
+	from tb_destino d join tb_hotel h on d.idHotel = h.idHotel
 	go
 
 /*create procedure usp_cliente_listar
@@ -129,15 +131,39 @@ create procedure usp_validar_usuario
 @usu  varchar(20),
 @pass varchar(15)
 as
-
 Select*from tb_usuario u Where @usu=u.usuario And @pass= u.pass
-
 go
 
 --ejecutar
+--exec usp_validar_usuario 'cliente@gmail.com','cliente'
+
+create procedure usp_agregar_tour
+@idTo char(5),
+@pre decimal,
+@des varchar(100)
+As
+Insert tb_tour values (@idTo,@pre,@des)
+go
+
+create or alter procedure usp_agregar_hotel
+@idHo char(5),
+@nom varchar(20),
+@cate varchar(15),
+@pre decimal,
+@des varchar(50),
+@idTo char(5)
+
+As
+Insert tb_hotel values (@idHo,@nom,@cate,@pre,@des,@idTo)
+go
 
 
+create or alter procedure usp_agregar_destino
 
-exec usp_validar_usuario 'cliente@gmail.com','cliente'
-
+@idDes char(5),
+@pais varchar(40),
+@ciu varchar(40),
+@idHo char(5)
+As
+Insert tb_destino values (@idDes,@pais,@ciu,@idHo)
 go

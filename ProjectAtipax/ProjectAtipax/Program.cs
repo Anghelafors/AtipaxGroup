@@ -1,9 +1,15 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using ProjectAtipax.DAO;
+using ProjectAtipax.Models.DI;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<ITour, tourDAO>();
+//builder.Services.AddSingleton<IHotel, hotelDAO>();
+//builder.Services.AddSingleton<IDestino, destinoDAO>();
+
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
    .AddCookie(option =>
    {

@@ -1,0 +1,58 @@
+﻿@model ProjectAtipax.Models.Hotel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Hotel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="idHotel" class="control-label"></label>
+                <input asp-for="idHotel" class="form-control" />
+                <span asp-validation-for="idHotel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="nomHotel" class="control-label"></label>
+                <input asp-for="nomHotel" class="form-control" />
+                <span asp-validation-for="nomHotel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="categoria" class="control-label"></label>
+                <input asp-for="categoria" class="form-control" />
+                <span asp-validation-for="categoria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="precioHotel" class="control-label"></label>
+                <input asp-for="precioHotel" class="form-control" />
+                <span asp-validation-for="precioHotel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="descripcion" class="control-label"></label>
+                <input asp-for="descripcion" class="form-control" />
+                <span asp-validation-for="descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="idTour" class="control-label"></label>
+                <select asp-for ="idTour" asp-items="@ViewBag.tourLis" class="form-select"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div>
+        @ViewBag.mensaje
+    </div>
+</div>
+
+<div>
+    @Html.Partial("_ParcialHotel", ViewBag.hotels as IEnumerable<ProjectAtipax.Models.Hotel>)
+</div>
+

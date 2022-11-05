@@ -1,0 +1,50 @@
+﻿@model ProjectAtipax.Models.Destino
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Destino</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="idDestino" class="control-label"></label>
+                <input asp-for="idDestino" class="form-control" />
+                <span asp-validation-for="idDestino" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="pais" class="control-label"></label>
+                <input asp-for="pais" class="form-control" />
+                <span asp-validation-for="pais" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ciudad" class="control-label"></label>
+                <input asp-for="ciudad" class="form-control" />
+                <span asp-validation-for="ciudad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="idHotel" class="control-label"></label>
+                <select asp-for="idHotel" asp-items="@ViewBag.hotelLis" class="form-select"></select>
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div>
+        @ViewBag.mensaje
+    </div>
+</div>
+
+<div>
+    @Html.Partial("_ParcialDestino", ViewBag.hotels as IEnumerable<ProjectAtipax.Models.Destino>)
+
+</div>
+
