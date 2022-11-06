@@ -35,8 +35,11 @@ namespace ProjectAtipax.DAO
 
         public Tour buscar(string codigo)
         {
-            throw new NotImplementedException();
-            //return listado().FirstOrDefault(c => c.idTour ==codigo)
+            
+            if (string.IsNullOrEmpty(codigo))
+                return null;
+            else
+                return listado().Where(c => c.idTour == codigo).FirstOrDefault();
         }
 
         public IEnumerable<Tour> listado()
@@ -61,6 +64,28 @@ namespace ProjectAtipax.DAO
             }
             return temporal;
 
+        }
+        public string actualizar(Tour t)
+        {
+            string mensaje = "";
+            conexionDAO cn = new conexionDAO();
+            using (cn.getcn)
+            {
+                cn.getcn.Open();
+                try
+                {
+                    SqlCommand cmd = new SqlCommand(
+                    "exec usp_actualizar_tour @idTo,@pre,@des", cn.getcn);
+                    cmd.Parameters.AddWithValue("@idTo", t.idTour);
+                    cmd.Parameters.AddWithValue("@pre", t.precio);
+                    cmd.Parameters.AddWithValue("@des", t.descripcion);
+                    cmd.ExecuteNonQuery();
+                    mensaje = "Se ha actualizado correctamente";
+                }
+                catch (SqlException ex) { mensaje = ex.Message; }
+                finally { cn.getcn.Close(); }
+            }
+            return mensaje;
         }
     }
 }

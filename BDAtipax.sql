@@ -167,3 +167,39 @@ create or alter procedure usp_agregar_destino
 As
 Insert tb_destino values (@idDes,@pais,@ciu,@idHo)
 go
+
+create procedure usp_actualizar_tour
+@idTo char(5),
+@pre decimal,
+@des varchar(100)
+As
+Update tb_tour 
+Set @pre=precio,@des=descripcion
+Where @idTo = idTour
+go
+
+create or alter procedure usp_actualizar_hotel
+@idHo char(5),
+@nom varchar(20),
+@cate varchar(15),
+@pre decimal,
+@des varchar(50),
+@idTo char(5)
+
+As
+Update tb_hotel
+Set @nom = nomHotel,@cate=categoria,@pre=precioHotel,@des=descripcion,@idTo=idTour
+Where @idHo = idHotel
+go
+
+create or alter procedure usp_actualizar_destino
+
+@idDes char(5),
+@pais varchar(40),
+@ciu varchar(40),
+@idHo char(5)
+As
+Update tb_destino 
+Set @pais=pais,@ciu=ciudad,@idHo=idHotel
+Where @idDes = idDestino
+go

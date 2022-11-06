@@ -28,7 +28,9 @@
                 @Html.DisplayFor(modelItem => item.descripcion)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+
+                    <button type="button" oneclick="_PartialEdit('@item.idTour')" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    img</button>
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>

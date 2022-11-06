@@ -5,5 +5,6 @@
         IEnumerable<Destino> listado();
         Destino buscar(string codigo);
         string agregar(Destino d);
+        string actualizar(Destino d);
     }
 }

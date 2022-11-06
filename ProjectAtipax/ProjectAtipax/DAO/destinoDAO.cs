@@ -34,7 +34,10 @@ namespace ProjectAtipax.DAO
 
         public Destino buscar(string codigo)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(codigo))
+                return null;
+            else
+                return listado().Where(c => c.idDestino == codigo).FirstOrDefault();
         }
 
         public IEnumerable<Destino> listado()
@@ -62,6 +65,31 @@ namespace ProjectAtipax.DAO
             }
             return temporal;
 
+        }
+        public string actualizar(Destino d)
+        {
+            string mensaje = "";
+            conexionDAO cn = new conexionDAO();
+            using (cn.getcn)
+            {
+                cn.getcn.Open();
+                try
+                {
+                    SqlCommand cmd = new SqlCommand(
+                    "exec usp_actualizar_destino @idDes,@pais,@ciu,@idHo", cn.getcn);
+                    cmd.Parameters.AddWithValue("@idDes", d.idDestino);
+                    cmd.Parameters.AddWithValue("@pais", d.pais);
+                    cmd.Parameters.AddWithValue("@ciu", d.ciudad);
+                    cmd.Parameters.AddWithValue("@idHo", d.idHotel);
+
+
+                    cmd.ExecuteNonQuery();
+                    mensaje = "Se ha actualizado correctamente";
+                }
+                catch (SqlException ex) { mensaje = ex.Message; }
+                finally { cn.getcn.Close(); }
+            }
+            return mensaje;
         }
     }
 }

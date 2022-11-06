@@ -35,7 +35,10 @@ namespace ProjectAtipax.DAO
 
         public Hotel buscar(string codigo)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(codigo))
+                return null;
+            else
+                return listado().Where(c => c.idHotel == codigo).FirstOrDefault();
         }
 
         public IEnumerable<Hotel> listado()
@@ -64,6 +67,32 @@ namespace ProjectAtipax.DAO
             }
             return temporal;
 
+        }
+        public string actualizar(Hotel h)
+        {
+            string mensaje = "";
+            conexionDAO cn = new conexionDAO();
+            using (cn.getcn)
+            {
+                cn.getcn.Open();
+                try
+                {
+                    SqlCommand cmd = new SqlCommand(
+                    "exec usp_actualizar_hotel @idHo,@nom,@cate,@pre,@des,@idTo", cn.getcn);
+                    cmd.Parameters.AddWithValue("@idHo", h.idHotel);
+                    cmd.Parameters.AddWithValue("@nom", h.nomHotel);
+                    cmd.Parameters.AddWithValue("@cate", h.categoria);
+                    cmd.Parameters.AddWithValue("@pre", h.precioHotel);
+                    cmd.Parameters.AddWithValue("@des", h.descripcion);
+                    cmd.Parameters.AddWithValue("@idTo", h.idTour);
+
+                    cmd.ExecuteNonQuery();
+                    mensaje = "Se ha actualizado correctamente";
+                }
+                catch (SqlException ex) { mensaje = ex.Message; }
+                finally { cn.getcn.Close(); }
+            }
+            return mensaje;
         }
     }
 }
