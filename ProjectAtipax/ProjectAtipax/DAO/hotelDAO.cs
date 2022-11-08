@@ -33,11 +33,11 @@ namespace ProjectAtipax.DAO
             return mensaje;
         }
 
-        public Hotel buscar(string codigo)
+        public Hotel buscar(int codigo)
         {
-            if (string.IsNullOrEmpty(codigo))
+            /*if (string.IsNullOrEmpty(codigo))
                 return null;
-            else
+            else*/
                 return listado().Where(c => c.idHotel == codigo).FirstOrDefault();
         }
 
@@ -48,19 +48,19 @@ namespace ProjectAtipax.DAO
             using (cn.getcn)
             {
                 cn.getcn.Open();
-                SqlCommand cmd = new SqlCommand("usp_hotel_listar", cn.getcn);
+                SqlCommand cmd = new SqlCommand("usp_hotel_lis", cn.getcn);
 
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
                     temporal.Add(new Hotel()
                     {
-                        idHotel = dr.GetString(0),
+                        idHotel = dr.GetInt32(0),
                         nomHotel = dr.GetString(1),
                         categoria = dr.GetString(2),
                         precioHotel = dr.GetDecimal(3),
                         descripcion = dr.GetString(4),
-                        idTour= dr.GetString(5)
+                        idTour= dr.GetInt32(5)
                         
                     });
                 }

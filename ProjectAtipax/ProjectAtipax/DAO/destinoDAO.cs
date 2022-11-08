@@ -32,11 +32,11 @@ namespace ProjectAtipax.DAO
             return mensaje;
         }
 
-        public Destino buscar(string codigo)
+        public Destino buscar(int codigo)
         {
-            if (string.IsNullOrEmpty(codigo))
+            /*if (string.IsNullOrEmpty(codigo))
                 return null;
-            else
+            else*/
                 return listado().Where(c => c.idDestino == codigo).FirstOrDefault();
         }
 
@@ -47,17 +47,17 @@ namespace ProjectAtipax.DAO
             using (cn.getcn)
             {
                 cn.getcn.Open();
-                SqlCommand cmd = new SqlCommand("usp_destino_listar", cn.getcn);
+                SqlCommand cmd = new SqlCommand("usp_destino_list", cn.getcn);
 
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
                     temporal.Add(new Destino()
                     {
-                        idDestino = dr.GetString(0),
+                        idDestino = dr.GetInt32(0),
                         pais = dr.GetString(1),
                         ciudad = dr.GetString(2),
-                        idHotel = dr.GetString(3)
+                        idHotel = dr.GetInt32(3)
 
 
                     });

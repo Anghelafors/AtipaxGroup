@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
 using ProjectAtipax.DAO;
 using ProjectAtipax.Models;
 using ProjectAtipax.Models.DI;
+using System.Data;
 
 namespace ProjectAtipax.Controllers
 {
+    // [Authorize]
     public class ManteDestinoController : Controller
     {
         IHotel _hotel;
@@ -17,6 +20,7 @@ namespace ProjectAtipax.Controllers
             _hotel = new hotelDAO();
             _destino = new destinoDAO();
         }
+        //  [Authorize(Roles = "Administrador")]
         public IActionResult Create()
         {
 

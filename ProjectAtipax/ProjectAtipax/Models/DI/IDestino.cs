@@ -3,7 +3,7 @@
     public interface IDestino
     {
         IEnumerable<Destino> listado();
-        Destino buscar(string codigo);
+        Destino buscar(int codigo);
         string agregar(Destino d);
         string actualizar(Destino d);
     }

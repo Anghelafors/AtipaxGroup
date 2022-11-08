@@ -2,7 +2,7 @@ drop database  BDAtipax
 create database BDAtipax
 use BDAtipax
 
-use master
+--use master
 
 -- tables
 
@@ -10,13 +10,15 @@ create table tb_roles
 (
  idRol int primary key not null,
  nombre varchar(50) not null
+
+  
 )
 
 create table tb_usuario
 (
  idUsuario int primary key not null,
- usuario varchar(20) not null,
- pass varchar(15) not null,
+ usuario varchar(20),
+ pass varchar(15),
  idRol int not null,
  foreign key (idRol) references tb_roles(idRol)
 )
@@ -24,32 +26,32 @@ create table tb_usuario
 insert into tb_roles values(1,'Administrador')
 insert into tb_roles values(2,'Cliente')
 
-select*from tb_usuario
+--select*from tb_usuario
 insert into tb_usuario values(1,'admi@gmail.com','admi',1)
 insert into tb_usuario values(2,'cliente@gmail.com','cliente',2)
 
 
 create table tb_tour(
-idTour char(5) primary key not null,
+idTour int primary key not null,
 precio decimal not null,
 descripcion nvarchar(100) not null
 )
 go
 create table tb_hotel(
-idHotel char(5) primary key not null,
+idHotel int primary key not null,
 nomHotel nvarchar(20) not null,
 categoria nvarchar(15) not null,
 precioHotel decimal not null,
 descripcion nvarchar(50) not null,
-idTour char(5) not null,
+idTour int not null,
 foreign key(idTour) references tb_tour(idTour)
 )
 go
 create table tb_destino(
-idDestino char(5) primary key not null,
+idDestino int primary key not null,
 pais nvarchar(40) not null,
 ciudad nvarchar(40) not null,
-idHotel char(5) not null,
+idHotel int not null,
 foreign key(idHotel) references tb_hotel(idHotel)
 )
 go
@@ -62,7 +64,7 @@ go
 
 -- modificar
 create table tb_cliente(
-idCliente char(6) primary key not null,
+idCliente int primary key not null,
 nombre nvarchar(40)not null,
 apePaterno nvarchar(20) not null,
 apeMaterno nvarchar(20) not null,
@@ -71,23 +73,23 @@ telefono char(9) not null,
 correo nvarchar(40) not null 
 )
 go
-insert into tb_cliente values('C00001','Dario','Yaranga','Verano','12345678','987654327','Veranod@atipax.com')
+/*insert into tb_cliente values('C00001','Dario','Yaranga','Verano','12345678','987654327','Veranod@atipax.com')
 insert into tb_cliente values('C00002','Anghela','Sanchez','Castillo','47345678','927684321','Sanchez@atipax.com')
 insert into tb_cliente values('C00003','Marco','Castañeda','Solis','42345678','917684326','Castañeda@atipax.com')
-
+*/
 
 
 create table tb_compra(
 
-idCompra char(6) primary key not null,
+idCompra int primary key not null,
 cantidadPerson int not null,
 total decimal(10,2) not null,
 fechaInicio date not null,
 fechaFin date not null,
-idHotel char(5) not null,
-idTour char(5) not null,
-idDestino char(5) not null,
-idCliente char(6) not null,
+idHotel int not null,
+idTour int not null,
+idDestino int not null,
+idCliente int not null,
 foreign key(idTour) references tb_tour(idTour),
 foreign key(idHotel) references tb_hotel(idHotel),
 foreign key(idDestino) references tb_destino(idDestino),
@@ -105,7 +107,7 @@ create procedure usp_tour_listar
 	select * from tb_tour
 	go
 
-create or alter proc usp_hotel_listar
+/*create or alter proc usp_hotel_listar
 As
 select h.idHotel, h.nomHotel, h.categoria, h.precioHotel, h.descripcion , t.descripcion
 from tb_hotel h join tb_tour t on h.idTour = t.idTour
@@ -116,7 +118,15 @@ create or alter procedure usp_destino_listar
 	select d.idDestino, d.pais, d.ciudad, h.nomHotel
 	from tb_destino d join tb_hotel h on d.idHotel = h.idHotel
 	go
-
+	*/
+	create procedure usp_hotel_lis
+	As
+	select * from tb_hotel
+	go
+create procedure usp_destino_list
+as
+select * from tb_destino
+go
 /*create procedure usp_cliente_listar
 	as
 	select * from tb_cliente
@@ -138,7 +148,7 @@ go
 --exec usp_validar_usuario 'cliente@gmail.com','cliente'
 
 create procedure usp_agregar_tour
-@idTo char(5),
+@idTo int,
 @pre decimal,
 @des varchar(100)
 As
@@ -146,12 +156,12 @@ Insert tb_tour values (@idTo,@pre,@des)
 go
 
 create or alter procedure usp_agregar_hotel
-@idHo char(5),
+@idHo int,
 @nom varchar(20),
 @cate varchar(15),
 @pre decimal,
 @des varchar(50),
-@idTo char(5)
+@idTo int
 
 As
 Insert tb_hotel values (@idHo,@nom,@cate,@pre,@des,@idTo)
@@ -160,16 +170,16 @@ go
 
 create or alter procedure usp_agregar_destino
 
-@idDes char(5),
+@idDes int,
 @pais varchar(40),
 @ciu varchar(40),
-@idHo char(5)
+@idHo int
 As
 Insert tb_destino values (@idDes,@pais,@ciu,@idHo)
 go
 
 create procedure usp_actualizar_tour
-@idTo char(5),
+@idTo int,
 @pre decimal,
 @des varchar(100)
 As
@@ -179,12 +189,12 @@ Where @idTo = idTour
 go
 
 create or alter procedure usp_actualizar_hotel
-@idHo char(5),
+@idHo int,
 @nom varchar(20),
 @cate varchar(15),
 @pre decimal,
 @des varchar(50),
-@idTo char(5)
+@idTo int
 
 As
 Update tb_hotel
@@ -194,10 +204,10 @@ go
 
 create or alter procedure usp_actualizar_destino
 
-@idDes char(5),
+@idDes int,
 @pais varchar(40),
 @ciu varchar(40),
-@idHo char(5)
+@idHo int
 As
 Update tb_destino 
 Set @pais=pais,@ciu=ciudad,@idHo=idHotel

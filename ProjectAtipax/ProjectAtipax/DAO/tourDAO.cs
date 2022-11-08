@@ -33,12 +33,12 @@ namespace ProjectAtipax.DAO
 
         }
 
-        public Tour buscar(string codigo)
+        public Tour buscar(int codigo)
         {
             
-            if (string.IsNullOrEmpty(codigo))
+           /* if (int.IsNullOrEmpty(codigo))
                 return null;
-            else
+            else*/
                 return listado().Where(c => c.idTour == codigo).FirstOrDefault();
         }
 
@@ -56,7 +56,7 @@ namespace ProjectAtipax.DAO
                 {
                     temporal.Add(new Tour()
                     {
-                        idTour = dr.GetString(0),
+                        idTour = dr.GetInt32(0),
                         precio = dr.GetDecimal(1),
                         descripcion = dr.GetString(2)
                     });

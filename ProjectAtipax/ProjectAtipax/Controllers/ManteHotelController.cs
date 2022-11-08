@@ -3,8 +3,11 @@ using ProjectAtipax.DAO;
 using ProjectAtipax.Models;
 using ProjectAtipax.Models.DI;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
+
 namespace ProjectAtipax.Controllers
 {
+    //  [Authorize]
     public class ManteHotelController : Controller
     {
         IHotel _hotel;
@@ -15,6 +18,7 @@ namespace ProjectAtipax.Controllers
             _hotel = new hotelDAO();
             _tour = new tourDAO();
         }
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Create()
         {
             //enviar lista de tours

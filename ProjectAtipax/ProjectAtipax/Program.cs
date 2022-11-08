@@ -16,6 +16,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
        //CONFIGURACION
        //especificar la apgina de logueo
        option.LoginPath = "/Acceso/Logueo";
+       option.AccessDeniedPath = "/Home/Privacy";
 
    });
 var app = builder.Build();
