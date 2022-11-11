@@ -6,6 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSession();
+
 builder.Services.AddSingleton<ITour, tourDAO>();
 //builder.Services.AddSingleton<IHotel, hotelDAO>();
 //builder.Services.AddSingleton<IDestino, destinoDAO>();
@@ -20,6 +22,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
    });
 var app = builder.Build();
+app.UseSession(); //habilitar el estado del Session
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

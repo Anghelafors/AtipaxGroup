@@ -8,81 +8,89 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ProjectAtipax
 build_property.RootNamespace = ProjectAtipax
-build_property.ProjectDir = C:\Users\TOSHIBA\Desktop\Project-DSW-Atipax\ProjectAtipax\ProjectAtipax\
+build_property.ProjectDir = C:\Users\HP\Desktop\Desarrollo de Servicios Web I\Proyecto Final\Proyecto Atipax\ProjectAtipax\ProjectAtipax\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\TOSHIBA\Desktop\Project-DSW-Atipax\ProjectAtipax\ProjectAtipax
+build_property.MSBuildProjectDirectory = C:\Users\HP\Desktop\Desarrollo de Servicios Web I\Proyecto Final\Proyecto Atipax\ProjectAtipax\ProjectAtipax
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/TOSHIBA/Desktop/Project-DSW-Atipax/ProjectAtipax/ProjectAtipax/Views/Acceso/Logueo.cshtml]
+[C:/Users/HP/Desktop/Desarrollo de Servicios Web I/Proyecto Final/Proyecto Atipax/ProjectAtipax/ProjectAtipax/Views/Acceso/Logueo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNvXExvZ3Vlby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/TOSHIBA/Desktop/Project-DSW-Atipax/ProjectAtipax/ProjectAtipax/Views/Home/Index.cshtml]
+[C:/Users/HP/Desktop/Desarrollo de Servicios Web I/Proyecto Final/Proyecto Atipax/ProjectAtipax/ProjectAtipax/Views/Atipax/Portal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXRpcGF4XFBvcnRhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Desktop/Desarrollo de Servicios Web I/Proyecto Final/Proyecto Atipax/ProjectAtipax/ProjectAtipax/Views/Atipax/Seleccionar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXRpcGF4XFNlbGVjY2lvbmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Desktop/Desarrollo de Servicios Web I/Proyecto Final/Proyecto Atipax/ProjectAtipax/ProjectAtipax/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/TOSHIBA/Desktop/Project-DSW-Atipax/ProjectAtipax/ProjectAtipax/Views/Home/Privacy.cshtml]
+[C:/Users/HP/Desktop/Desarrollo de Servicios Web I/Proyecto Final/Proyecto Atipax/ProjectAtipax/ProjectAtipax/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/TOSHIBA/Desktop/Project-DSW-Atipax/ProjectAtipax/ProjectAtipax/Views/ManteDestino/Create.cshtml]
+[C:/Users/HP/Desktop/Desarrollo de Servicios Web I/Proyecto Final/Proyecto Atipax/ProjectAtipax/ProjectAtipax/Views/ManteDestino/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudGVEZXN0aW5vXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/TOSHIBA/Desktop/Project-DSW-Atipax/ProjectAtipax/ProjectAtipax/Views/ManteDestino/_ParcialDestino.cshtml]
+[C:/Users/HP/Desktop/Desarrollo de Servicios Web I/Proyecto Final/Proyecto Atipax/ProjectAtipax/ProjectAtipax/Views/ManteDestino/_ParcialDestino.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudGVEZXN0aW5vXF9QYXJjaWFsRGVzdGluby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/TOSHIBA/Desktop/Project-DSW-Atipax/ProjectAtipax/ProjectAtipax/Views/ManteHotel/Create.cshtml]
+[C:/Users/HP/Desktop/Desarrollo de Servicios Web I/Proyecto Final/Proyecto Atipax/ProjectAtipax/ProjectAtipax/Views/ManteHotel/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudGVIb3RlbFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/TOSHIBA/Desktop/Project-DSW-Atipax/ProjectAtipax/ProjectAtipax/Views/ManteHotel/_ParcialHotel.cshtml]
+[C:/Users/HP/Desktop/Desarrollo de Servicios Web I/Proyecto Final/Proyecto Atipax/ProjectAtipax/ProjectAtipax/Views/ManteHotel/_ParcialHotel.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudGVIb3RlbFxfUGFyY2lhbEhvdGVsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/TOSHIBA/Desktop/Project-DSW-Atipax/ProjectAtipax/ProjectAtipax/Views/ManteTour/Create.cshtml]
+[C:/Users/HP/Desktop/Desarrollo de Servicios Web I/Proyecto Final/Proyecto Atipax/ProjectAtipax/ProjectAtipax/Views/ManteTour/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudGVUb3VyXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/TOSHIBA/Desktop/Project-DSW-Atipax/ProjectAtipax/ProjectAtipax/Views/ManteTour/_ParcialEdit.cshtml]
+[C:/Users/HP/Desktop/Desarrollo de Servicios Web I/Proyecto Final/Proyecto Atipax/ProjectAtipax/ProjectAtipax/Views/ManteTour/_ParcialEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudGVUb3VyXF9QYXJjaWFsRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/TOSHIBA/Desktop/Project-DSW-Atipax/ProjectAtipax/ProjectAtipax/Views/ManteTour/_ParcialTour.cshtml]
+[C:/Users/HP/Desktop/Desarrollo de Servicios Web I/Proyecto Final/Proyecto Atipax/ProjectAtipax/ProjectAtipax/Views/ManteTour/_ParcialTour.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudGVUb3VyXF9QYXJjaWFsVG91ci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/TOSHIBA/Desktop/Project-DSW-Atipax/ProjectAtipax/ProjectAtipax/Views/Shared/Error.cshtml]
+[C:/Users/HP/Desktop/Desarrollo de Servicios Web I/Proyecto Final/Proyecto Atipax/ProjectAtipax/ProjectAtipax/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/TOSHIBA/Desktop/Project-DSW-Atipax/ProjectAtipax/ProjectAtipax/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/HP/Desktop/Desarrollo de Servicios Web I/Proyecto Final/Proyecto Atipax/ProjectAtipax/ProjectAtipax/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/TOSHIBA/Desktop/Project-DSW-Atipax/ProjectAtipax/ProjectAtipax/Views/Viajes/Contactenos.cshtml]
+[C:/Users/HP/Desktop/Desarrollo de Servicios Web I/Proyecto Final/Proyecto Atipax/ProjectAtipax/ProjectAtipax/Views/Viajes/Contactenos.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlhamVzXENvbnRhY3Rlbm9zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/TOSHIBA/Desktop/Project-DSW-Atipax/ProjectAtipax/ProjectAtipax/Views/Viajes/EscojeDestino.cshtml]
+[C:/Users/HP/Desktop/Desarrollo de Servicios Web I/Proyecto Final/Proyecto Atipax/ProjectAtipax/ProjectAtipax/Views/Viajes/EscojeDestino.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlhamVzXEVzY29qZURlc3Rpbm8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/TOSHIBA/Desktop/Project-DSW-Atipax/ProjectAtipax/ProjectAtipax/Views/Viajes/Inicio.cshtml]
+[C:/Users/HP/Desktop/Desarrollo de Servicios Web I/Proyecto Final/Proyecto Atipax/ProjectAtipax/ProjectAtipax/Views/Viajes/Inicio.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlhamVzXEluaWNpby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/TOSHIBA/Desktop/Project-DSW-Atipax/ProjectAtipax/ProjectAtipax/Views/_ViewImports.cshtml]
+[C:/Users/HP/Desktop/Desarrollo de Servicios Web I/Proyecto Final/Proyecto Atipax/ProjectAtipax/ProjectAtipax/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/TOSHIBA/Desktop/Project-DSW-Atipax/ProjectAtipax/ProjectAtipax/Views/_ViewStart.cshtml]
+[C:/Users/HP/Desktop/Desarrollo de Servicios Web I/Proyecto Final/Proyecto Atipax/ProjectAtipax/ProjectAtipax/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/TOSHIBA/Desktop/Project-DSW-Atipax/ProjectAtipax/ProjectAtipax/Views/Shared/_Layout.cshtml]
+[C:/Users/HP/Desktop/Desarrollo de Servicios Web I/Proyecto Final/Proyecto Atipax/ProjectAtipax/ProjectAtipax/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-pyrk0175wq

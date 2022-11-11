@@ -2,6 +2,13 @@
 {
     public class Compra
     {
+        public int codigo { get; set; }
+        public string pais { get; set; }
+        public string ciudad { get; set; }
+        public string categoria { get; set; }
+        public decimal precio { get; set; }
+        public int cantidad { get; set; }
+        public decimal monto { get { return precio * cantidad; } }
         /*
         public  int idCompra {get; set;}
         public int cantidadPerson { get; set; }

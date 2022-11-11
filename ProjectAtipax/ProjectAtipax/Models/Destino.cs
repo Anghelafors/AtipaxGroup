@@ -9,6 +9,8 @@ idHotel char(5) not null,*/
         public int idDestino { get; set; }
         public String pais { get; set; }
         public String ciudad { get; set; }
+        public string categoria { get; set; }
+        public decimal precio { get; set; }
         public int idHotel { get; set; }
 
         public Destino()
