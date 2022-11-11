@@ -29,13 +29,23 @@ insert into tb_roles values(2,'Cliente')
 --select*from tb_usuario
 insert into tb_usuario values(1,'admi@gmail.com','admi',1)
 insert into tb_usuario values(2,'cliente@gmail.com','cliente',2)
-
+go
 
 create table tb_tour(
 idTour int primary key not null,
 precio decimal not null,
 descripcion nvarchar(100) not null
 )
+go
+-- Insertando datos
+insert into tb_tour values(1,'full day',500)
+insert into tb_tour values(2,'medio dia',300)
+insert into tb_tour values(3,'city tour',100)
+
+--select*from tb_tour
+
+go
+--drop table tb_hotel
 go
 create table tb_hotel(
 idHotel int primary key not null,
@@ -47,17 +57,35 @@ idTour int not null,
 foreign key(idTour) references tb_tour(idTour)
 )
 go
+-- Insertando datos a tb_hotel
+insert into tb_hotel values(1,'Sheraton','5 estrellas',150,'completo',2)
+insert into tb_hotel values(2,'Marriot','4 estrellas',140,'Semi completo',1)
+
+--select*from tb_hotel
+create table tb_categorias(
+IdCategoria int primary key not null,
+NombreCategoria varchar(15) not null
+)
+insert into tb_categorias values(1,'Nacionales')
+insert into tb_categorias values(2,'Internacionales')
+
+--select * from tb_categorias 
+
+go
 create table tb_destino(
 idDestino int primary key not null,
 pais nvarchar(40) not null,
 ciudad nvarchar(40) not null,
 idHotel int not null,
-foreign key(idHotel) references tb_hotel(idHotel)
+IdCategoria int not null,
+foreign key(idHotel) references tb_hotel(idHotel),
+foreign key(IdCategoria) references tb_categorias(IdCategoria)
 )
 go
---insert into tb_destino values('D0001','Peru','Lima','H0001')
 
-							 
+insert into tb_destino values(1,'Peru','Lima',1,2)
+insert into tb_destino values(2,'Chile','Santiago',2,1)
+						 
 
 
 --select * from tb_destino
