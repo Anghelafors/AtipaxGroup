@@ -72,6 +72,7 @@ insert into tb_categorias values(2,'Internacionales')
 --select * from tb_categorias 
 
 go
+drop table tb_destino
 create table tb_destino(
 idDestino int primary key not null,
 pais nvarchar(40) not null,
@@ -82,9 +83,13 @@ foreign key(idHotel) references tb_hotel(idHotel),
 foreign key(IdCategoria) references tb_categorias(IdCategoria)
 )
 go
+--Agregar una nueva columna a la tabla destino
+alter table tb_destino add precio decimal not null
 
-insert into tb_destino values(1,'Peru','Lima',1,2)
-insert into tb_destino values(2,'Chile','Santiago',2,1)
+--delete from tb_destino
+go
+insert into tb_destino values(1,'Peru','Lima',1,2,1500)
+insert into tb_destino values(2,'Chile','Santiago',2,1,3000)
 						 
 
 
