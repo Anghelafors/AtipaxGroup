@@ -85,15 +85,77 @@ foreign key(IdCategoria) references tb_categorias(IdCategoria)
 go
 --Agregar una nueva columna a la tabla destino
 alter table tb_destino add precio decimal not null
+alter table tb_destino add UnidadesEnExistencia smallint not null
 
 --delete from tb_destino
+--
 go
-insert into tb_destino values(1,'Peru','Lima',1,2,1500)
-insert into tb_destino values(2,'Chile','Santiago',2,1,3000)
+insert into tb_destino values(1,'Peru','Lima',1,2,1500,5)
+insert into tb_destino values(2,'Chile','Santiago',2,1,3000,10)
+
+create table tb_pedidos(
+	idpedido int primary key,
+	fpedido datetime default(getdate()),
+	dni varchar(8),
+	nombre varchar(255),
+	email varchar(255)
+)
+go
+
+create table tb_pedidos_deta(
+	idpedido int references tb_pedidos,
+	idDestino int references tb_destino,
+	cantidad int,
+	precio decimal
+)
+
+go
+
+-- ************ PROCEDURES **********
+create or alter function dbo.autogenera() returns int
+As
+Begin 
+	Declare @n int=(Select top 1 idpedido from tb_pedidos order by 1 desc)
+	if(@n is null)
+		Set @n=1
+	else
+		Set @n+=1
+	return @n
+End
+go
+
+create or alter proc usp_agrega_pedido
+@idpedido int output,
+@dni varchar(8),
+@nombre varchar(255),
+@email varchar(255)
+As
+Begin
+	Set @idpedido=dbo.autogenera()
+	insert tb_pedidos(idpedido,dni,nombre,email) Values(@idpedido,@dni,@nombre,@email)
+End
+go
+
+create or alter procedure usp_agrega_detalle
+@idpedido int,
+@idDestino int,
+@cantidad int,
+@precio decimal
+As
+Insert tb_pedidos_deta Values(@idpedido,@idDestino,@cantidad,@precio)
+go
+
+create or alter proc usp_actualiza_stock
+@idDestino int,
+@cant smallint
+As
+Update tb_destino Set UnidadesEnExistencia-=@cant Where idDestino=@idDestino
+
+go
 						 
+--*************************************************************************************
 
 
---select * from tb_destino
 
 -- modificar
 create table tb_cliente(
