@@ -45,6 +45,13 @@ namespace ProjectAtipax.Controllers
 
         public IActionResult Portal()
         {
+            //al ejecutar el portal definir la Session canasta, si no existe se crea uno
+            if (HttpContext.Session.GetString("canasta") == null)
+            {
+                HttpContext.Session.SetString("canasta", JsonConvert.SerializeObject(new List<Compra>()));
+            }
+
+            //enviar el catalogo a la vista
             return View(catalogo());
         }
 
@@ -57,9 +64,116 @@ namespace ProjectAtipax.Controllers
         [HttpPost]
         public IActionResult Seleccionar(int codigo, int cantidad)
         {
-            //recibir los datos para agregar al Session
-            return View();
+            //buscar el producto por su codigo
+            Destino reg = catalogo().FirstOrDefault(p => p.idDestino == codigo);
 
+            //definir una Compra y almacenar los datos 
+            Compra it = new Compra()
+            {
+                codigo = codigo,
+                pais = reg.pais,
+                ciudad = reg.ciudad,
+                categoria = reg.categoria,
+                precio = reg.precio,
+                cantidad = cantidad
+            };
+
+            //deserializar el Session canasta para almacenar it
+            List<Compra> temporal = JsonConvert.DeserializeObject<List<Compra>>(
+                          HttpContext.Session.GetString("canasta"));
+            //agregar
+            temporal.Add(it);
+
+            //serializar
+            HttpContext.Session.SetString("canasta", JsonConvert.SerializeObject(temporal));
+            ViewBag.mensaje = $"Se ha registrado el destino{reg.pais}";
+            return View(reg);
+        }
+
+        public ActionResult Resumen()
+        {
+            //enviar a la vista la lista deserializada del Session Canasta
+            List<Compra> temporal = JsonConvert.DeserializeObject<List<Compra>>(
+                         HttpContext.Session.GetString("canasta"));
+            return View(temporal);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            //deserializar
+            List<Compra> temporal = JsonConvert.DeserializeObject<List<Compra>>(
+                         HttpContext.Session.GetString("canasta"));
+
+            //eliminar el registro del Session canasta por su campo codigo
+            temporal.Remove(temporal.FirstOrDefault(p => p.codigo == id));
+
+            //serializar el temporal
+            HttpContext.Session.SetString("canasta", JsonConvert.SerializeObject(temporal));
+
+            //redireccionar al Resumen
+            return RedirectToAction("Resumen");
+        }
+
+        public IActionResult Comprar()
+        {
+            //enviamos a vista un nuevo Cliente para el pedido
+            return View(new Cliente());
+        }
+
+        [HttpPost]
+        public IActionResult Comprar(Cliente reg)
+        {
+            string mensaje = "";
+            using (SqlConnection cn = new SqlConnection(_iconfig["ConnectionStrings:cadena"]))
+            {
+                cn.Open();
+                SqlTransaction tr = cn.BeginTransaction(IsolationLevel.Serializable);
+                try
+                {
+                    //ejecutar el proceso donde agrega_pedido
+                    SqlCommand cmd = new SqlCommand("usp_agrega_pedido", cn, tr);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@idpedido", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    cmd.Parameters.AddWithValue("@dni", reg.dni);
+                    cmd.Parameters.AddWithValue("@nombre", reg.nombre);
+                    cmd.Parameters.AddWithValue("@email", reg.email);
+                    cmd.ExecuteNonQuery();
+                    int idpedido = (int)cmd.Parameters["@idpedido"].Value; //recupero el valor @idpedido
+
+                    List<Compra> temporal = JsonConvert.DeserializeObject<List<Compra>>(
+                            HttpContext.Session.GetString("canasta"));
+
+                    foreach (Compra item in temporal)
+                    {
+                        cmd = new SqlCommand("exec usp_agrega_detalle @idpedido,@idDestino,@cantidad,@precio", cn, tr);
+                        cmd.Parameters.AddWithValue("@idpedido", idpedido);
+                        cmd.Parameters.AddWithValue("@idDestino", item.codigo);
+                        cmd.Parameters.AddWithValue("@cantidad", item.cantidad);
+                        cmd.Parameters.AddWithValue("@precio", item.precio);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    foreach (Compra item in temporal)
+                    {
+                        cmd = new SqlCommand("exec usp_actualiza_stock @idDestino,@cant", cn, tr);
+                        cmd.Parameters.AddWithValue("@idDestino", item.codigo);
+                        cmd.Parameters.AddWithValue("@cant", item.cantidad);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    tr.Commit(); //si todo esta OK
+                    mensaje = $"Se ha registrado el pedido {idpedido}";
+                }
+                catch (SqlException ex)
+                {
+                    mensaje = ex.Message;
+                    tr.Rollback(); //deshacer el proceso
+                }
+                finally { cn.Close(); }
+            }
+
+            ViewBag.mensaje = mensaje;
+            return View(reg);
         }
     }
 }
