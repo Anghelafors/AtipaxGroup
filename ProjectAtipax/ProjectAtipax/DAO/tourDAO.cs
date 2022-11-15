@@ -7,7 +7,7 @@ namespace ProjectAtipax.DAO
 {
     public class tourDAO : ITour
     {
-        
+
         public string agregar(Tour t)
         {
             string mensaje = "";
@@ -22,7 +22,7 @@ namespace ProjectAtipax.DAO
                     cmd.Parameters.AddWithValue("@idTo", t.idTour);
                     cmd.Parameters.AddWithValue("@pre", t.precio);
                     cmd.Parameters.AddWithValue("@des", t.descripcion);
-                   
+
                     cmd.ExecuteNonQuery();
                     mensaje = "Se ha registrado correctamente";
                 }
@@ -33,13 +33,18 @@ namespace ProjectAtipax.DAO
 
         }
 
-        public Tour buscar(int codigo)
+        public Tour buscar(int id)
         {
-            
-           /* if (int.IsNullOrEmpty(codigo))
+
+            /*if (id == null)
+            {
+
                 return null;
-            else*/
-                return listado().Where(c => c.idTour == codigo).FirstOrDefault();
+            }
+            else
+            {*/
+            return listado().Where(c => c.idTour == id).FirstOrDefault();
+
         }
 
         public IEnumerable<Tour> listado()
@@ -67,7 +72,7 @@ namespace ProjectAtipax.DAO
         }
         public string actualizar(Tour t)
         {
-            string mensaje = "";
+            string mensajeEditar = "";
             conexionDAO cn = new conexionDAO();
             using (cn.getcn)
             {
@@ -80,12 +85,38 @@ namespace ProjectAtipax.DAO
                     cmd.Parameters.AddWithValue("@pre", t.precio);
                     cmd.Parameters.AddWithValue("@des", t.descripcion);
                     cmd.ExecuteNonQuery();
-                    mensaje = "Se ha actualizado correctamente";
+                    mensajeEditar = "Se ha actualizado correctamente";
                 }
-                catch (SqlException ex) { mensaje = ex.Message; }
+                catch (SqlException ex) { mensajeEditar = ex.Message; }
                 finally { cn.getcn.Close(); }
             }
-            return mensaje;
+            return mensajeEditar;
+        }
+
+        public string eliminar(Object obj)
+        {
+
+            string mensajeEliminar = "";
+            conexionDAO cn = new conexionDAO();
+            using (cn.getcn)
+            {
+
+                cn.getcn.Open();
+                try
+                {
+
+                    SqlCommand cmd = new SqlCommand("exec usp_eliminar_tour @idTo", cn.getcn);
+
+                    cmd.Parameters.AddWithValue("@idTo", obj);
+                    cmd.ExecuteNonQuery();
+                    mensajeEliminar = "El Tour se ha eliminado";
+
+                }
+                catch (SqlException ex) { mensajeEliminar = ex.Message; }
+                finally { cn.getcn.Close(); }
+            }
+            return mensajeEliminar;
         }
     }
+
 }

@@ -17,11 +17,11 @@ namespace ProjectAtipax.DAO
                 {
                     SqlCommand cmd = new SqlCommand(
                     "exec usp_agregar_hotel @idHo,@nom,@cate,@pre,@des,@idTo", cn.getcn);
-                    cmd.Parameters.AddWithValue("@idHo",h.idHotel);
+                    cmd.Parameters.AddWithValue("@idHo", h.idHotel);
                     cmd.Parameters.AddWithValue("@nom", h.nomHotel);
-                    cmd.Parameters.AddWithValue("@cate",h.categoria);
+                    cmd.Parameters.AddWithValue("@cate", h.categoria);
                     cmd.Parameters.AddWithValue("@pre", h.precioHotel);
-                    cmd.Parameters.AddWithValue("@des",h.descripcion);
+                    cmd.Parameters.AddWithValue("@des", h.descripcion);
                     cmd.Parameters.AddWithValue("@idTo", h.idTour);
 
                     cmd.ExecuteNonQuery();
@@ -33,12 +33,13 @@ namespace ProjectAtipax.DAO
             return mensaje;
         }
 
-        public Hotel buscar(int codigo)
+        public Hotel buscar(int id)
         {
-            /*if (string.IsNullOrEmpty(codigo))
+            /*if (id==null)
+                
                 return null;
             else*/
-                return listado().Where(c => c.idHotel == codigo).FirstOrDefault();
+            return listado().Where(c => c.idHotel == id).FirstOrDefault();
         }
 
         public IEnumerable<Hotel> listado()
@@ -60,8 +61,8 @@ namespace ProjectAtipax.DAO
                         categoria = dr.GetString(2),
                         precioHotel = dr.GetDecimal(3),
                         descripcion = dr.GetString(4),
-                        idTour= dr.GetInt32(5)
-                        
+                        idTour = dr.GetInt32(5)
+
                     });
                 }
             }
@@ -94,5 +95,29 @@ namespace ProjectAtipax.DAO
             }
             return mensaje;
         }
+        public string eliminar(Object obj)
+        {
+
+            string mensaje = "";
+            conexionDAO cn = new conexionDAO();
+            using (cn.getcn)
+            {
+
+                cn.getcn.Open();
+                try
+                {
+
+                    SqlCommand cmd = new SqlCommand("exec usp_eliminar_tour @idTo", cn.getcn);
+
+                    cmd.Parameters.AddWithValue("@idTo", obj);
+                    cmd.ExecuteNonQuery();
+
+                }
+                catch (SqlException ex) { mensaje = ex.Message; }
+                finally { cn.getcn.Close(); }
+            }
+            return mensaje;
+        }
     }
+
 }

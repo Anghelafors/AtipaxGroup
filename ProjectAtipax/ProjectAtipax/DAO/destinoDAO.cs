@@ -16,12 +16,15 @@ namespace ProjectAtipax.DAO
                 try
                 {
                     SqlCommand cmd = new SqlCommand(
-                    "exec usp_agregar_destino @idDes,@pais,@ciu,@idHo", cn.getcn);
+                    "exec usp_agregar_destino @idDes,@pais,@ciu,@idHo,@idCate,@pre,@uni", cn.getcn);
                     cmd.Parameters.AddWithValue("@idDes", d.idDestino);
                     cmd.Parameters.AddWithValue("@pais", d.pais);
                     cmd.Parameters.AddWithValue("@ciu", d.ciudad);
                     cmd.Parameters.AddWithValue("@idHo", d.idHotel);
-                    
+                    cmd.Parameters.AddWithValue("@idCate", d.IdCategoria);
+                    cmd.Parameters.AddWithValue("@pre", d.precio);
+                    cmd.Parameters.AddWithValue("@uni", d.UnidadesEnExistencia);
+
 
                     cmd.ExecuteNonQuery();
                     mensaje = "Se ha registrado correctamente";
@@ -32,12 +35,12 @@ namespace ProjectAtipax.DAO
             return mensaje;
         }
 
-        public Destino buscar(int codigo)
+        public Destino buscar(int id)
         {
             /*if (string.IsNullOrEmpty(codigo))
                 return null;
             else*/
-                return listado().Where(c => c.idDestino == codigo).FirstOrDefault();
+            return listado().Where(c => c.idDestino == id).FirstOrDefault();
         }
 
         public IEnumerable<Destino> listado()
@@ -76,11 +79,14 @@ namespace ProjectAtipax.DAO
                 try
                 {
                     SqlCommand cmd = new SqlCommand(
-                    "exec usp_actualizar_destino @idDes,@pais,@ciu,@idHo", cn.getcn);
+                    "exec usp_actualizar_destino @idDes,@pais,@ciu,@idHo,@idCate,@pre,@uni", cn.getcn);
                     cmd.Parameters.AddWithValue("@idDes", d.idDestino);
                     cmd.Parameters.AddWithValue("@pais", d.pais);
                     cmd.Parameters.AddWithValue("@ciu", d.ciudad);
                     cmd.Parameters.AddWithValue("@idHo", d.idHotel);
+                    cmd.Parameters.AddWithValue("@idCate", d.IdCategoria);
+                    cmd.Parameters.AddWithValue("@pre", d.precio);
+                    cmd.Parameters.AddWithValue("@uni", d.UnidadesEnExistencia);
 
 
                     cmd.ExecuteNonQuery();
@@ -91,5 +97,12 @@ namespace ProjectAtipax.DAO
             }
             return mensaje;
         }
+
+        public string eliminar(object obj)
+        {
+            throw new NotImplementedException();
+        }
     }
+
+
 }
