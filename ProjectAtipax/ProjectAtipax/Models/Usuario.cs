@@ -11,11 +11,6 @@ namespace ProjectAtipax.Models
         [Display(Name = "Contraseña"), Required, StringLength(15)] public String pass { get; set; }
         public int idRol { get; set; }
 
-        public Usuario()
-        {
-            usuario = "";
-            pass = "";
-        }
 
        
 

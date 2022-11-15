@@ -31,13 +31,6 @@ namespace ProjectAtipax.Controllers
 
 
 
-              string mensaje = "";
-              using (SqlConnection cn = new SqlConnection(_iconfig["ConnectionStrings:cadena"]))
-
-              {
-                  cn.Open();
-                  try
-                  {
                       var valiUsu = acce.validacion(reg.usuario, reg.pass);
                       if (valiUsu != null)
                       {
@@ -74,15 +67,9 @@ namespace ProjectAtipax.Controllers
 
 
 
-                  ViewBag.mensaje = mensaje;
-                  return View();
-
-              }
 
 
 
-
-          }
 
           public async Task<IActionResult> Salir()
           {
@@ -146,5 +133,3 @@ namespace ProjectAtipax.Controllers
         }
 
 
-    }
-}
