@@ -9,8 +9,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSession();
 
 builder.Services.AddSingleton<ITour, tourDAO>();
-//builder.Services.AddSingleton<IHotel, hotelDAO>();
-//builder.Services.AddSingleton<IDestino, destinoDAO>();
+builder.Services.AddSingleton<IHotel, hotelDAO>();
+builder.Services.AddSingleton<IDestino, destinoDAO>();
+builder.Services.AddSingleton<ICategoria, categoriaDAO>();
+
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
    .AddCookie(option =>
@@ -18,6 +20,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
        //CONFIGURACION
        //especificar la apgina de logueo
        option.LoginPath = "/Acceso/Logueo";
+       option.ExpireTimeSpan = TimeSpan.FromMinutes(30);
        option.AccessDeniedPath = "/Home/Privacy";
 
    });
