@@ -12,7 +12,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.descripcion)
             </th>
-            <th></th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -28,13 +28,14 @@
                 @Html.DisplayFor(modelItem => item.descripcion)
             </td>
             <td>
+                    
+                     @Html.ActionLink("Actualizar", "Edit", new {  id=item.idTour })<img src="~/img/editar.png" class="editar" />
 
-                    <button type="button" oneclick="_PartialEdit('@item.idTour')" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    img</button>
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
+                     @Html.ActionLink("Eliminar", "Delete", new {  id=item.idTour  })<img src="~/img/eliminar.png" class="eliminar"/>
+            
+                 </td>
         </tr>
 }
     </tbody>
 </table>
+
