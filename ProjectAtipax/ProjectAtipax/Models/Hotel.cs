@@ -1,4 +1,6 @@
-﻿namespace ProjectAtipax.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ProjectAtipax.Models
 {
     public class Hotel
     {
@@ -9,20 +11,20 @@ precioHotel decimal(6,2) not null,
 descripcion nvarchar(50) not null,
 idTour char(5) not null,*/
 
-        public int idHotel { get; set; }
-        public String nomHotel { get; set; }
-        public String categoria { get; set; }
-        public Decimal precioHotel { get; set; }
-        public String descripcion { get; set; }
-        public int idTour { get; set; }
+        [Display(Name = "Código Hotel"), Required] public int idHotel { get; set; }
+        [Display(Name = "Nombre del Hotel"), Required] public String nomHotel { get; set; }
+        [Display(Name = "Categoría"), Required] public String categoria { get; set; }
+        [Display(Name = "Precio"), Required] public Decimal precioHotel { get; set; }
+        [Display(Name = "Descripción"), Required] public String descripcion { get; set; }
+        [Display(Name = "Código Tour"), Required] public int idTour { get; set; }
 
         public Hotel()
         {
-           
+
             nomHotel = "";
             categoria = "";
             descripcion = "";
-           
+
         }
     }
 }

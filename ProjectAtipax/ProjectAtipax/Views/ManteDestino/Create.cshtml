@@ -5,46 +5,61 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<h1 class="tituloMantenimiento">Mantenimiento Destino</h1>
+@if (@ViewBag.mensaje != null)
+{
+    <div class="alert alert-primary" role="alert">
+        @ViewBag.mensaje
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
-<h4>Destino</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
+    </div>
+}
+
+@if (@ViewBag.mensajeEliminar != null)
+{
+    <div class="alert alert-primary" role="alert">
+        @ViewBag.mensajeEliminar
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+    </div>
+}
+<div class="masterDivision">
+    <div class="createUno">
+        <h2>Agregar Destino:</h2>
+        <form asp-action="Create" class="row g-3">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            <div class="col-md-7">
                 <label asp-for="idDestino" class="control-label"></label>
                 <input asp-for="idDestino" class="form-control" />
                 <span asp-validation-for="idDestino" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="col-md-7">
                 <label asp-for="pais" class="control-label"></label>
                 <input asp-for="pais" class="form-control" />
                 <span asp-validation-for="pais" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="col-md-7">
                 <label asp-for="ciudad" class="control-label"></label>
                 <input asp-for="ciudad" class="form-control" />
                 <span asp-validation-for="ciudad" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="col-md-7">
                 <label asp-for="idHotel" class="control-label"></label>
                 <select asp-for="idHotel" asp-items="@ViewBag.hotelLis" class="form-select"></select>
 
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="form-group botonAgregar">
+                <input type="submit" value="Agregar Destino" class="btn btn-primary" />
             </div>
         </form>
     </div>
-    <div>
-        @ViewBag.mensaje
+
+
+
+<div class="listaDos">
+    <div class="parcialEditar">
+    @Html.Partial("_ParcialDestino", ViewBag.destinos as IEnumerable<ProjectAtipax.Models.Destino>)
     </div>
 </div>
-
-<div>
-    @Html.Partial("_ParcialDestino", ViewBag.destinos as IEnumerable<ProjectAtipax.Models.Destino>)
-
 </div>
 

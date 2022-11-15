@@ -13,14 +13,15 @@ descripcion nvarchar(100) not null
 
     [Display(Name ="Password"),Required,StringLength(10)]public string clave { get; set; }
         */
-        public int idTour { get; set; }
-        public Decimal precio { get; set; }
-        public String descripcion { get; set; }
+        [Display(Name = "Código"), Required] public int idTour { get; set; }
+        [Display(Name = "Precio"), Required] public Decimal precio { get; set; }
+        [Display(Name = "Descripción"), Required] public String descripcion { get; set; }
 
         public Tour()
         {
-           
+
             descripcion = "";
         }
     }
 }
+

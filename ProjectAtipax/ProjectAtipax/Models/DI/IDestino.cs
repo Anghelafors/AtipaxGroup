@@ -3,8 +3,10 @@
     public interface IDestino
     {
         IEnumerable<Destino> listado();
-        Destino buscar(int codigo);
+        Destino buscar(int id);
         string agregar(Destino d);
         string actualizar(Destino d);
+        string eliminar(Object obj);
+
     }
 }
