@@ -16,7 +16,16 @@
             <th>
                 @Html.DisplayNameFor(model => model.idHotel)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCategoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnidadesEnExistencia)
+            </th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -35,9 +44,19 @@
                 @Html.DisplayFor(modelItem => item.idHotel)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.DisplayNameFor(model => model.IdCategoria)
+            </td>
+                <td>
+                   @Html.DisplayNameFor(model => model.precio)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.UnidadesEnExistencia)
+            </td>
+            <td>
+                    @Html.ActionLink("Actualizar", "Edit", new {  id=item.idDestino })<img src="~/img/editar.png" class="editar" />
+
+                    @Html.ActionLink("Eliminar", "Delete", new {  id=item.idDestino })<img src="~/img/eliminar.png" class="eliminar" />
+
             </td>
         </tr>
 }
