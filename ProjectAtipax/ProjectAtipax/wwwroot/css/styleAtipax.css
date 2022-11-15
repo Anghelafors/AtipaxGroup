@@ -225,3 +225,95 @@ footer h4 {
         background-color: #286679;
         color: white;
     }
+/* STYLE DEL LADO DEL ADMINISTRADOR*/
+
+.tituloMantenimiento {
+    text-align: center;
+    font-size: 32px;
+}
+
+.masterDivision {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+    padding-bottom: 50px;
+}
+
+.listaDos {
+    width: 50%;
+    margin-right: 70px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+.parcialEditar {
+    margin-top: 8px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.createUno {
+    margin-left: 80px;
+    margin-bottom: 8px;
+    width: 30%;
+    padding-bottom: 15px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+    .createUno h2 {
+        text-align: center;
+        font-size: 20px;
+        margin-top: 0;
+        padding-top: 4px;
+        padding-bottom: 5px;
+        background-color: #49586D;
+        color: white;
+    }
+
+.formulario {
+    padding-left: 8px;
+    margin-top: 70px;
+}
+
+.botonAgregar {
+    margin-top: 16px;
+    margin-left: 130px;
+}
+
+.editar {
+    height: 23px;
+    width: 22px;
+    padding-left: 3px;
+}
+
+.eliminar {
+    height: 25px;
+    width: 28px;
+    padding-left: 3px;
+}
+
+/* style edit */
+
+.editarCuadro {
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    width: 40%;
+    margin-left: 450px;
+    margin-top: 100px;
+}
+    .editarCuadro h2 {
+        text-align: center;
+        font-size: 20px;
+        margin-top: 0;
+        padding-top: 4px;
+        padding-bottom: 5px;
+        background-color: #49586D;
+        color: white;
+    }
+
+.formularioEdit {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.form-group{
+    margin-top: 10px;
+    padding-bottom:15px;
+    margin-left: 150px;
+}
