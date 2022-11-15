@@ -8,7 +8,7 @@ using System.Data;
 
 namespace ProjectAtipax.Controllers
 {
-   // [Authorize]
+    [Authorize]
     public class ManteTourController : Controller
     {
         ITour _tour;
@@ -16,7 +16,7 @@ namespace ProjectAtipax.Controllers
         {
             _tour = new tourDAO();
         }
-        // [Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Create()
         {
             //enviar lista de tours
@@ -27,27 +27,39 @@ namespace ProjectAtipax.Controllers
         [HttpPost]
         public IActionResult Create(Tour to)
         {
-            
+
             ViewBag.mensaje = _tour.agregar(to);
             ViewBag.tours = _tour.listado();
             return View(to);
         }
-
-        public IActionResult _ParcialEdit(int codigo)
+        [Authorize(Roles = "Administrador")]
+        public IActionResult Edit(int id)
         {
-            Tour t = _tour.buscar(codigo);
+            Tour t = _tour.buscar(id);
 
-          //  if (t == null) return RedirectToAction("Index");
+            //  if (t == null) return RedirectToAction("Index");
 
-    
+
             return View(t);
         }
         [HttpPost]
-        public IActionResult _ParcialEdit(Tour t)
+        public IActionResult Edit(Tour t)
         {
-            
-           // ViewBag.mensaje = _tour.actualizar(t);
+
+            ViewBag.mensajeEditar = _tour.actualizar(t);
             return View(t);
         }
+        [Authorize(Roles = "Administrador")]
+        public IActionResult Delete(int id)
+        {
+            ViewBag.mensajeEliminar = _tour.eliminar(id);
+
+
+            return RedirectToAction("Create", "ManteTour");
+
+        }
+
+
     }
+
 }
