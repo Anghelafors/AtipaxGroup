@@ -43,17 +43,11 @@ namespace ProjectAtipax.Controllers
             return temporal;
         }
 
-        public IActionResult Portal()
-        {
-            //al ejecutar el portal definir la Session canasta, si no existe se crea uno
             if (HttpContext.Session.GetString("canasta") == null)
             {
                 HttpContext.Session.SetString("canasta", JsonConvert.SerializeObject(new List<Compra>()));
             }
 
-            //enviar el catalogo a la vista
-            return View(catalogo());
-        }
 
         public IActionResult Seleccionar(int id = 0)
         {
@@ -104,13 +98,10 @@ namespace ProjectAtipax.Controllers
             List<Compra> temporal = JsonConvert.DeserializeObject<List<Compra>>(
                          HttpContext.Session.GetString("canasta"));
 
-            //eliminar el registro del Session canasta por su campo codigo
             temporal.Remove(temporal.FirstOrDefault(p => p.codigo == id));
 
-            //serializar el temporal
             HttpContext.Session.SetString("canasta", JsonConvert.SerializeObject(temporal));
 
-            //redireccionar al Resumen
             return RedirectToAction("Resumen");
         }
 

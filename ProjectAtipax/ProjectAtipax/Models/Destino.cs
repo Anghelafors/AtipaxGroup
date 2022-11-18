@@ -18,12 +18,6 @@ idHotel char(5) not null,*/
         [Display(Name = "Precio"), Required] public int UnidadesEnExistencia { get; set; }
 
         
-        public Destino()
-        {
-
-            pais = "";
-            ciudad = "";
 
         }
     }
-}

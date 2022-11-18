@@ -16,13 +16,11 @@ namespace ProjectAtipax.Controllers
         {
 
             _hotel = new hotelDAO();
-            _tour = new tourDAO();
         }
         [Authorize(Roles = "Administrador")]
         public IActionResult Create()
         {
             //enviar lista de tours
-            ViewBag.tourLis = new SelectList(_tour.listado(), "idTour", "descripcion");
             ViewBag.hotels = _hotel.listado();
             return View(new Hotel());
 
@@ -33,7 +31,6 @@ namespace ProjectAtipax.Controllers
         {
 
             ViewBag.mensaje = _hotel.agregar(h);
-            ViewBag.tourLis = new SelectList(_tour.listado(), "idTour", "descripcion", h.idTour);
             ViewBag.hotels = _hotel.listado();
             return View(h);
         }
@@ -44,7 +41,6 @@ namespace ProjectAtipax.Controllers
             Hotel h = _hotel.buscar(id);
 
             //  if (t == null) return RedirectToAction("Index");
-            ViewBag.tourLis = new SelectList(_tour.listado(), "idTour", "descripcion", h.idTour);
 
 
             return View(h);
@@ -54,7 +50,6 @@ namespace ProjectAtipax.Controllers
         {
 
             ViewBag.mensaje = _hotel.actualizar(h);
-            ViewBag.tourLis = new SelectList(_tour.listado(), "idTour", "descripcion", h.idTour);
             return View(h);
         }
         [Authorize(Roles = "Administrador")]

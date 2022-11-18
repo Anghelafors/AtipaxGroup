@@ -38,7 +38,6 @@ namespace ProjectAtipax.Controllers
                 new Claim(ClaimTypes.Role,"Administrador")
                 }, CookieAuthenticationDefaults.AuthenticationScheme);
                 isAuthenticate = true;
-                return RedirectToAction("Create", "ManteTour");
             }
 
             if (usuario == "cliente" && pass == "cliente")
@@ -49,7 +48,6 @@ namespace ProjectAtipax.Controllers
                 new Claim(ClaimTypes.Role,"Cliente")
 }, CookieAuthenticationDefaults.AuthenticationScheme);
                 isAuthenticate = true;
-                return RedirectToAction("Inicio", "Viajes");
             }
 
             if (isAuthenticate)

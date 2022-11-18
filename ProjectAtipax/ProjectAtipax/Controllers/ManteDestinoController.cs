@@ -28,7 +28,6 @@ namespace ProjectAtipax.Controllers
 
             //enviar lista de hoteles
             ViewBag.categoriaLis = new SelectList(_categoria.listado(), "IdCategoria", "NombreCategoria");
-
             ViewBag.hotelLis = new SelectList(_hotel.listado(), "idHotel", "nomHotel");
             ViewBag.destinos = _destino.listado();
             return View(new Destino());
@@ -65,7 +64,6 @@ namespace ProjectAtipax.Controllers
 
             ViewBag.mensaje = _destino.actualizar(d);
             ViewBag.categoriaLis = new SelectList(_categoria.listado(), "IdCategoria", "NombreCategoria", d.IdCategoria);
-
             ViewBag.hotelLis = new SelectList(_hotel.listado(), "idHotel", "nomHotel", d.idHotel);
             return View(d);
         }

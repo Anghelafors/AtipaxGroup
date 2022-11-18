@@ -21,10 +21,6 @@ idTour char(5) not null,*/
         public Hotel()
         {
 
-            nomHotel = "";
-            categoria = "";
-            descripcion = "";
 
         }
     }
-}

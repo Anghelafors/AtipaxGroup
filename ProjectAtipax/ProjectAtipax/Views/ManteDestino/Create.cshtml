@@ -15,14 +15,7 @@
     </div>
 }
 
-@if (@ViewBag.mensajeEliminar != null)
-{
-    <div class="alert alert-primary" role="alert">
-        @ViewBag.mensajeEliminar
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
-    </div>
-}
 <div class="masterDivision">
     <div class="createUno">
         <h2>Agregar Destino:</h2>
@@ -43,11 +36,6 @@
                 <label asp-for="ciudad" class="control-label"></label>
                 <input asp-for="ciudad" class="form-control" />
                 <span asp-validation-for="ciudad" class="text-danger"></span>
-            </div>
-            <div class="col-md-5">
-                <label asp-for="precio" class="control-label"></label>
-                <input asp-for="precio" class="form-control" />
-                <span asp-validation-for="precio" class="text-danger"></span>
             </div>
             <div class="col-md-5">
                 <label asp-for="UnidadesEnExistencia" class="control-label"></label>

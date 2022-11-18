@@ -1,32 +1,33 @@
-﻿namespace ProjectAtipax.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ProjectAtipax.Models
 {
+    // es el registro, donde se añadirá nuevos campos
     public class Compra
     {
-        public int codigo { get; set; }
-        public string pais { get; set; }
-        public string ciudad { get; set; }
-        public string categoria { get; set; }
-        public decimal precio { get; set; }
-        public int cantidad { get; set; }
-        public decimal monto { get { return precio * cantidad; } }
-        /*
-        public  int idCompra {get; set;}
-        public int cantidadPerson { get; set; }
-        public Decimal total { get; set; }
-        public DateTime fechaInicio { get; set; }
-        public DateTime fechaFin { get; set; }
-        public String idHotel { get; set; }
-        public String idTour { get; set; }
-        public String idDestino { get; set; }
-        public String idCliente { get; set; }
-        public Compra()
-        {
-            idCompra = "";
-            idTour = "";
-            idHotel = "";
+       
+      
+        [Display(Name = "Código"), Required] public int codigo { get; set; }
+        [Display(Name = "País"), Required] public string pais { get; set; }
+        [Display(Name = "Ciudad"), Required] public string ciudad { get; set; }
+        //[Display(Name = "Código Hotel"), Required] public int idHotel { get; set; }
+        [Display(Name = "Hotel"), Required] public string nomHotel { get; set; }
+        [Display(Name = "Categoria Hotel"), Required] public string categoriaHotel { get; set; }
+        [Display(Name = "Precio Hotel"), Required] public Decimal precioHotel { get; set; }
+     //   [Display(Name = "Código Categoria"), Required] public int IdCategoria { get; set; }
+        [Display(Name = "Categoria"), Required] public string NombreCategoria { get; set; }
+
+       // [Display(Name = "Código Tour"), Required] public int idTour { get; set; }
+        [Display(Name = "Descripción Tour"), Required] public string descripcionTour { get; set; }
+
+        [Display(Name = "Precio Tour"), Required] public Decimal precioTour { get; set; }
+
+        [Display(Name = "Precio"), Required] public Decimal precio { get; set; }
+        [Display(Name = "Unidades"), Required] public int UnidadesEnExistencia { get; set; }
+
+        [Display(Name = "N° Personas"), Required] public int cantidad { get; set; }
+        [Display(Name = "Unidades"), Required] public decimal monto { get { return (precioHotel + precioTour) * cantidad; } }
+
           
-            idDestino = "";
-            idCliente = "";
-        }*/
     }
 }
