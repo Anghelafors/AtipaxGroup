@@ -31,85 +31,67 @@ insert into tb_usuario values(2,'cliente@gmail.com','cliente',2)
 go
 */
 create table tb_tour(
-idTour int primary key ,
-precio decimal not null,
-descripcion nvarchar(100) not null
+idTour int primary key not null ,
+precioTour decimal not null,
+descripcionTour nvarchar(100) not null
 )
 go
 
--- Insertando datos
-insert into tb_tour values(1,0,'No existe tour')
+insert into tb_tour values(1,0,'Sin tour')
 insert into tb_tour values(2,300,'medio dia')
 insert into tb_tour values(3,100,'city tour')
 insert into tb_tour values(4,100,'full day')
---select*from tb_tour
 
---select*from tb_hotel
 go
 
+
 create  table tb_hotel(
-idHotel int primary key ,
+idHotel int primary key not null , 
 nomHotel nvarchar(20) not null,
-categoria nvarchar(15) not null,
+categoriaHotel nvarchar(15) not null,
 precioHotel decimal not null,
-descripcion nvarchar(50) not null,
-idTour int DEFAULT 1,
-foreign key(idTour) references tb_tour(idTour)
-on update cascade
-on delete  set DEFAULT
+descripcionHotel nvarchar(50) not null
+
 )
 go
 
--- Insertando datos a tb_hotel
-insert into tb_hotel values(1,'Sin asignar','Sin asignar',0,'Sin asignar',1)
-insert into tb_hotel values(2,'Sheraton','5 estrellas',150,'Completo',2)
-insert into tb_hotel values(3,'Marriot','4 estrellas',140,'Semi completo',3)
+insert into tb_hotel values(1,'Xcaret','5 estrellas',0,'Semi completo')
+insert into tb_hotel values(2,'Sheraton','5 estrellas',150,'Completo')
+insert into tb_hotel values(3,'Marriot','4 estrellas',140,'Semi completo')
 
---select*from tb_hotel
 create table tb_categorias(
 IdCategoria int primary key not null,
 NombreCategoria varchar(15) not null
 )
-insert into tb_categorias values(1,'Sin asignar')
-insert into tb_categorias values(2,'Internacionales')
-insert into tb_categorias values(3,'Nacionales')
-insert into tb_categorias values(4,'Europa')
---select * from tb_categorias 
 
---select * from tb_categorias 
-
-
+insert into tb_categorias values(1,'Internacionales')
+insert into tb_categorias values(2,'Nacionales')
+insert into tb_categorias values(3,'Europa')
 
 create table tb_destino(
 idDestino int primary key not null,
 pais nvarchar(40) not null,
 ciudad nvarchar(40) not null,
-idHotel int DEFAULT 1,
-IdCategoria int not null DEFAULT 1,
-precio decimal not null,
+idHotel int not null,
+IdCategoria int not null,
+idTour int not null,
 UnidadesEnExistencia smallint not null,
 foreign key(idHotel) references tb_hotel(idHotel),
-foreign key(IdCategoria) references tb_categorias(IdCategoria)
-on update cascade
-on delete set DEFAULT
+foreign key(IdCategoria) references tb_categorias(IdCategoria),
+foreign key(idTour) references tb_tour(idTour)
 )
-go
+insert into tb_destino values(1,'España','Madrid',2,3,4,2)
 
---delete from tb_destino
---
-
-insert into tb_destino values(1,'España','Madrid',2,3,15000,5)
-insert into tb_destino values(2,'Peru','Lima',2,2,3000,10)
-insert into tb_destino values(3,'Chile','Santiago',3,4,2000,4)
-						 
-
-
+--FALTA TODA ESAS TABLAS
 create table tb_pedidos(
 	idpedido int primary key,
 	fpedido datetime default(getdate()),
+	nombre varchar(100),
+	apePaterno varchar(100),
+	apeMaterno varchar(100),
 	dni varchar(8),
-	nombre varchar(255),
-	email varchar(255)
+	telefono int,
+	email  varchar(150)
 )
 go
 
@@ -122,7 +104,7 @@ create table tb_pedidos_deta(
 
 go
 
--- ************ PROCEDURES **********
+-- ************ PROCEDURES  DE PEDIDOS**********
 create or alter function dbo.autogenera() returns int
 As
 Begin 
@@ -137,13 +119,16 @@ go
 
 create or alter proc usp_agrega_pedido
 @idpedido int output,
+@nom varchar(100),
+@apePat varchar(100),
+@apeMat varchar(100),
 @dni varchar(8),
-@nombre varchar(255),
-@email varchar(255)
+@fono int,
+@email varchar(150)
 As
 Begin
 	Set @idpedido=dbo.autogenera()
-	insert tb_pedidos(idpedido,dni,nombre,email) Values(@idpedido,@dni,@nombre,@email)
+	insert tb_pedidos(idpedido,nombre,apePaterno,apeMaterno,dni,telefono,email) Values(@idpedido,@nom,@apePat,@apeMat, @dni,@fono,@email)
 End
 go
 
@@ -167,93 +152,12 @@ go
 --*************************************************************************************
 
 
-
--- modificar
-create table tb_cliente(
-idCliente int primary key not null,
-nombre nvarchar(40)not null,
-apePaterno nvarchar(20) not null,
-apeMaterno nvarchar(20) not null,
-dni char(8) not null,
-telefono char(9) not null,
-correo nvarchar(40) not null 
-)
-go
-/*insert into tb_cliente values('C00001','Dario','Yaranga','Verano','12345678','987654327','Veranod@atipax.com')
-insert into tb_cliente values('C00002','Anghela','Sanchez','Castillo','47345678','927684321','Sanchez@atipax.com')
-insert into tb_cliente values('C00003','Marco','Castañeda','Solis','42345678','917684326','Castañeda@atipax.com')
-*/
-
-
-create table tb_compra(
-
-idCompra int primary key not null,
-cantidadPerson int not null,
-total decimal(10,2) not null,
-fechaInicio date not null,
-fechaFin date not null,
-idHotel int not null,
-idTour int not null,
-idDestino int not null,
-idCliente int not null,
-foreign key(idTour) references tb_tour(idTour),
-foreign key(idHotel) references tb_hotel(idHotel),
-foreign key(idDestino) references tb_destino(idDestino),
-foreign key(idCliente) references tb_cliente(idCliente)
-)
-go
+-- ************ PROCEDURES DE TOUR**********
 
 create procedure usp_tour_listar
 	as
 	select * from tb_tour
 	go
-
-/*create or alter proc usp_hotel_listar
-As
-select h.idHotel, h.nomHotel, h.categoria, h.precioHotel, h.descripcion , t.descripcion
-from tb_hotel h join tb_tour t on h.idTour = t.idTour
-go
-
-create or alter procedure usp_destino_listar
-	as
-	select d.idDestino, d.pais, d.ciudad, h.nomHotel
-	from tb_destino d join tb_hotel h on d.idHotel = h.idHotel
-	go
-	*/
-	create procedure usp_hotel_lis
-	As
-	select * from tb_hotel
-	go
-create procedure usp_destino_list
-as
-select * from tb_destino
-go
-
-create procedure usp_categorias_list
-as
-select*from tb_categorias
-go
-
-/*create procedure usp_cliente_listar
-	as
-	select * from tb_cliente
-	go
-*/
-create procedure usp_compra_listar
-	as
-	select * from tb_compra
-	go
-
-create procedure usp_validar_usuario
-@usu  varchar(20),
-@pass varchar(15)
-as
-Select*from tb_usuario u Where @usu=u.usuario And @pass= u.pass
-go
-
---drop procedure usp_validar_usuario
---ejecutar
---exec usp_validar_usuario 'cliente@gmail.com','cliente'
 
 create procedure usp_agregar_tour
 @idTo int,
@@ -263,31 +167,112 @@ As
 Insert tb_tour values (@idTo,@pre,@des)
 go
 
+
+
+
+create or alter procedure usp_actualizar_tour
+@idTo int,
+@pre decimal,
+@des varchar(100)
+As
+Update tb_tour
+Set  precioTour = @pre ,descripcionTour =@des
+Where idTour=@idTo
+go
+select * from tb_tour
+	
+create procedure usp_eliminar_tour
+@idTo int
+as
+	delete from tb_tour
+	where idTour = @idTo
+go
+-- ************ PROCEDURES DE HOTEL**********
+	create procedure usp_hotel_lis
+	As
+	select * from tb_hotel
+	go
+
 create or alter procedure usp_agregar_hotel
 @idHo int,
 @nom varchar(20),
 @cate varchar(15),
 @pre decimal,
-@des varchar(50),
-@idTo int
-
+@des varchar(50)
 As
-Insert tb_hotel values (@idHo,@nom,@cate,@pre,@des,@idTo)
+Insert tb_hotel values (@idHo,@nom,@cate,@pre,@des)
 go
 
 
-create or alter procedure usp_agregar_destino
 
+create or alter procedure usp_actualizar_hotel
+@idHo int,
+@nom varchar(20),
+@cate varchar(15),
+@pre decimal,
+@des varchar(50)
+As
+Update tb_hotel
+Set nomHotel= @nom , categoriaHotel =@cate,precioHotel =@pre,descripcionHotel =@des
+Where idHotel=@idHo  
+go
+
+
+create procedure usp_eliminar_hotel
+@idHo int
+as
+	delete from tb_hotel
+	where idHotel= @idHo
+go
+
+
+-- ************ PROCEDURES DE DESTINO**********
+create  or alter procedure usp_destino_list
+as
+select * from tb_destino
+go
+
+create or alter procedure usp_agregar_destino
 @idDes int,
 @pais varchar(40),
 @ciu varchar(40),
 @idHo int,
 @idCate int,
-@pre decimal,
+@idTo int,
 @uni smallint
 As
-Insert tb_destino values (@idDes,@pais,@ciu,@idHo,@idCate,@pre,@uni)
+Insert tb_destino values (@idDes,@pais,@ciu,@idHo,@idCate,@idTo,@uni)
 go
+
+
+create or alter procedure usp_actualizar_destino
+@idDes int,
+@pais varchar(40),
+@ciu varchar(40),
+@idHo int,
+@idCate int,
+@idTo int,
+@uni smallint
+As
+Update tb_destino 
+Set pais= @pais,ciudad=@ciu,idHotel= @idHo,
+IdCategoria=@idCate,idTour=@idTo, UnidadesEnExistencia=@uni 
+Where idDestino=@idDes
+go
+
+create procedure usp_eliminar_destino
+@idDe int
+as
+	delete from tb_destino
+	where idDestino = @idDe
+go
+
+-- ************ PROCEDURES DE CATEGORIAS**********
+create procedure usp_categorias_list
+as
+select*from tb_categorias
+go
+
 
 create procedure usp_agregar_categoria
 @idCa int,
@@ -296,30 +281,7 @@ As
 Insert tb_categorias values (@idCa,@nom)
 go
 
-create or alter procedure usp_actualizar_tour
-@idTo int,
-@pre decimal,
-@des varchar(100)
-As
-Update tb_tour
-Set  precio= @pre ,descripcion=@des
-Where idTour=@idTo
-go
 
-
-create or alter procedure usp_actualizar_hotel
-@idHo int,
-@nom varchar(20),
-@cate varchar(15),
-@pre decimal,
-@des varchar(50),
-@idTo int
-
-As
-Update tb_hotel
-Set nomHotel= @nom ,categoria=@cate,precioHotel =@pre,descripcion=@des,idTour=@idTo
-Where idHotel=@idHo  
-go
 
 create or alter procedure usp_actualizar_categoria
 @idCa int,
@@ -330,42 +292,6 @@ Set NombreCategoria= @nom
 Where IdCategoria=@idCa
 go
 
-create or alter procedure usp_actualizar_destino
-
-@idDes int,
-@pais varchar(40),
-@ciu varchar(40),
-@idHo int,
-@idCate int,
-@pre decimal,
-@uni smallint
-As
-Update tb_destino 
-Set pais= @pais,ciudad=@ciu,idHotel= @idHo, IdCategoria=@idCate, precio=@pre, UnidadesEnExistencia=@uni
-Where idDestino=@idDes
-go
-
-
-
-create procedure usp_eliminar_tour
-@idTo int
-as
-	delete from tb_tour
-	where idTour = @idTo
-go
-
-create procedure usp_eliminar_hotel
-@idHo int
-as
-	delete from tb_hotel
-	where idHotel= @idHo
-go
-create procedure usp_eliminar_destino
-@idDe int
-as
-	delete from tb_destino
-	where idDestino = @idDe
-go
 create procedure usp_eliminar_categoria
 
 @idCa int
@@ -373,40 +299,22 @@ as
 	delete from tb_categorias
 	where IdCategoria = @idCa
 go
+/* PROCEDURES DE CONSULTA PARA LA PAG. ESCOJE TU DESTINO*/
 
---consultar por destino
-/*create procedure usp_consultar_destino
-@pa varchar(40),
-@ciu varchar(40)
-as
-	select d.idDestino, d.pais, d.ciudad, h.nomHotel
-	from tb_destino d join tb_hotel h on d.idHotel = h.idHotel
-	where d.pais = @pa OR d.ciudad =@ciu
-	
-go*/
-
-create procedure usp_consultar_destino
+create or alter procedure usp_consultar_destino
 @pa varchar(40)
 as
-	select d.idDestino, d.pais, d.ciudad, h.nomHotel
-	from tb_destino d join tb_hotel h on d.idHotel = h.idHotel
-	where d.pais= @pa 
+select d.idDestino, d.pais, d.ciudad,h.nomHotel, h.categoriaHotel,t.descripcionTour,d.UnidadesEnExistencia 
+	from tb_destino d inner join tb_hotel h on d.idHotel = h.idHotel 
+		             inner join tb_tour t on d.idTour = t.idTour
+					 
+	where d.pais=@pa
 go
+create or alter procedure usp_consultarSin_destino
+as
+select d.idDestino, d.pais, d.ciudad,h.nomHotel, h.categoriaHotel, h.precioHotel , c.NombreCategoria,t.descripcionTour , t.precioTour, d.UnidadesEnExistencia 
+	from tb_destino d inner join tb_hotel h on d.idHotel = h.idHotel 
+		             inner join tb_tour t on d.idTour = t.idTour
+					  inner join tb_categorias c on d.IdCategoria = c.IdCategoria
 
-exec usp_consultar_destino Chile,Lima
---exec usp_eliminar_tour 3
---select* from tb_hotel
---select*from tb_tour
---exec usp_tour_listar
---update tb_hotel set idTour=2 where idHotel=2
---insert into tb_tour values(3,0,'Sin tour')
---insert into tb_tour values(1,45,'TOUR A')
---insert into tb_tour values(2,67,'TOUR B')
-drop table tb_compra
-drop table tb_cliente
-drop table tb_destino
-drop table tb_hotel
-drop table tb_tour
-drop procedure usp_tour_listar
---usp_hotel_lis
---usp_destino_list
+go
