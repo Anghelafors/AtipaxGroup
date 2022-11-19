@@ -1,1 +1,68 @@
-﻿
+﻿@model IEnumerable<ProjectAtipax.Models.Destino>
+
+@{
+    ViewData["Title"] = "Portal";
+}
+
+
+
+    <link href="~/css/styleAtipax.css" rel="stylesheet" />
+
+<div class="escojeDestino">
+    <div class="filtroDestino">
+        <div class="dest">
+            <form>
+            <p>Ingrese destino\ciudad:</p>
+            @Html.TextBox("pais")
+            <button  class="btCiudad">BUSCAR</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div class="portal">
+    @foreach (var item in Model)
+    {
+            <div class="registro">
+      
+                <div class="row">
+
+                <div class="col-sm-12 espacio">
+                    <label>Código:       @Html.DisplayFor(modelItem => item.idDestino)  </label>
+                   
+                </div>
+                <div class="col-sm-12 espacio">
+                    <label class="labelPais">
+                        @Html.DisplayFor(modelItem => item.pais), @Html.DisplayFor(modelItem => item.ciudad)
+                    </label>
+                </div>
+
+                <div class="col-sm-12 espacio">
+                    <label>Hotel:       @Html.DisplayFor(modelItem => item.nomHotel)   </label>
+                  
+                </div>
+                <div class="col-sm-12 espacio">
+                    <label>Categoria del Hotel:     @Html.DisplayFor(modelItem => item.categoriaHotel)  </label>
+                    
+                 </div>
+                <div class="col-sm-12 espacio">
+                    <label>Tour:       @Html.DisplayFor(modelItem => item.descripcionTour) </label>
+                    
+                </div>
+                <div class="col-sm-12 espacio">
+                    <label>Cupos:       @Html.DisplayFor(modelItem => item.UnidadesEnExistencia)</label>
+                </div>
+
+                <p class="linkSeleccion"><img src="~/img/imgDetalle.png">@Html.ActionLink("Ver Detalle", "Seleccionar", new {id=item.idDestino })</p>
+                
+                </div>
+            </div>
+    }
+</div>
+
+
+
+

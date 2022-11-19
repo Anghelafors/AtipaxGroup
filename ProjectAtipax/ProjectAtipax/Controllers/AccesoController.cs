@@ -54,8 +54,16 @@ namespace ProjectAtipax.Controllers
             {
                 var principal = new ClaimsPrincipal(identity);
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+                if (usuario == "admi" && pass == "admi")
+                {
+                    return RedirectToAction("Create", "ManteTour");
+                }
+                if (usuario == "cliente" && pass == "cliente")
+                {
+                    return RedirectToAction("Inicio", "Viajes");
 
-                
+                }
+
             }
             return View();
         }

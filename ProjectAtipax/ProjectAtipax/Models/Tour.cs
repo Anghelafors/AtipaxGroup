@@ -17,9 +17,7 @@ descripcion nvarchar(100) not null
         [Display(Name = "Precio"), Required] public Decimal precioTour { get; set; }
         [Display(Name = "Descripción"), Required] public String descripcionTour { get; set; }
 
-        public Tour()
-        {
-
+ 
     }
 }
 

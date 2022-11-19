@@ -16,15 +16,19 @@
             <th>
                 @Html.DisplayNameFor(model => model.idHotel)
             </th>
+               
+              
             <th>
                 @Html.DisplayNameFor(model => model.IdCategoria)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.precio)
+                @Html.DisplayNameFor(model => model.idTour)
             </th>
+     
             <th>
                 @Html.DisplayNameFor(model => model.UnidadesEnExistencia)
             </th>
+  
             <th>Acciones</th>
         </tr>
     </thead>
@@ -43,15 +47,17 @@
             <td>
                 @Html.DisplayFor(modelItem => item.idHotel)
             </td>
+       
             <td>
-                    @Html.DisplayNameFor(model => model.IdCategoria)
+                    @Html.DisplayFor(modelItem => item.IdCategoria)
             </td>
                 <td>
-                   @Html.DisplayNameFor(model => model.precio)
+                    @Html.DisplayFor(modelItem => item.idTour)
                 </td>
                 <td>
-                    @Html.DisplayNameFor(model => model.UnidadesEnExistencia)
+                    @Html.DisplayFor(modelItem => item.UnidadesEnExistencia)
             </td>
+            
             <td>
                     @Html.ActionLink("Actualizar", "Edit", new {  id=item.idDestino })<img src="~/img/editar.png" class="editar" />
 

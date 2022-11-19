@@ -11,18 +11,16 @@
                 @Html.DisplayNameFor(model => model.nomHotel)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.categoria)
+                @Html.DisplayNameFor(model => model.categoriaHotel)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.precioHotel)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.descripcion)
+                @Html.DisplayNameFor(model => model.descripcionHotel)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.idTour)
-            </th>
-            <th></th>
+       
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -36,17 +34,15 @@
                     @Html.DisplayFor(modelItem => item.nomHotel)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.categoria)
+                    @Html.DisplayFor(modelItem => item.categoriaHotel)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.precioHotel)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.descripcion)
+                    @Html.DisplayFor(modelItem => item.descripcionHotel)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.idTour)
-                </td>
+              
                 <td>
                     @Html.ActionLink("Actualizar", "Edit", new {  id=item.idHotel })<img src="~/img/editar.png" class="editar" />
 

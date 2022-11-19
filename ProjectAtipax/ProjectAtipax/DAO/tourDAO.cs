@@ -20,8 +20,8 @@ namespace ProjectAtipax.DAO
                     SqlCommand cmd = new SqlCommand(
                     "exec usp_agregar_tour @idTo,@pre,@des", cn.getcn);
                     cmd.Parameters.AddWithValue("@idTo", t.idTour);
-                    cmd.Parameters.AddWithValue("@pre", t.precio);
-                    cmd.Parameters.AddWithValue("@des", t.descripcion);
+                    cmd.Parameters.AddWithValue("@pre", t.precioTour);
+                    cmd.Parameters.AddWithValue("@des", t.descripcionTour);
 
                     cmd.ExecuteNonQuery();
                     mensaje = "Se ha registrado correctamente";
@@ -62,8 +62,8 @@ namespace ProjectAtipax.DAO
                     temporal.Add(new Tour()
                     {
                         idTour = dr.GetInt32(0),
-                        precio = dr.GetDecimal(1),
-                        descripcion = dr.GetString(2)
+                        precioTour = dr.GetDecimal(1),
+                        descripcionTour = dr.GetString(2)
                     });
                 }
             }
@@ -82,8 +82,8 @@ namespace ProjectAtipax.DAO
                     SqlCommand cmd = new SqlCommand(
                     "exec usp_actualizar_tour @idTo,@pre,@des", cn.getcn);
                     cmd.Parameters.AddWithValue("@idTo", t.idTour);
-                    cmd.Parameters.AddWithValue("@pre", t.precio);
-                    cmd.Parameters.AddWithValue("@des", t.descripcion);
+                    cmd.Parameters.AddWithValue("@pre", t.precioTour);
+                    cmd.Parameters.AddWithValue("@des", t.descripcionTour);
                     cmd.ExecuteNonQuery();
                     mensajeEditar = "Se ha actualizado correctamente";
                 }

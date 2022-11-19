@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.Data.SqlClient;
 using ProjectAtipax.DAO;
 using ProjectAtipax.Models;
@@ -15,12 +16,14 @@ namespace ProjectAtipax.Controllers
         IHotel _hotel;
         IDestino _destino;
         ICategoria _categoria;
+        ITour _tour;
         public ManteDestinoController()
         {
 
             _hotel = new hotelDAO();
             _destino = new destinoDAO();
             _categoria = new categoriaDAO();
+            _tour = new tourDAO();
         }
         //  [Authorize(Roles = "Administrador")]
         public IActionResult Create()
@@ -29,6 +32,7 @@ namespace ProjectAtipax.Controllers
             //enviar lista de hoteles
             ViewBag.categoriaLis = new SelectList(_categoria.listado(), "IdCategoria", "NombreCategoria");
             ViewBag.hotelLis = new SelectList(_hotel.listado(), "idHotel", "nomHotel");
+            ViewBag.toursList = new SelectList(_tour.listado(), "idTour", "descripcionTour");
             ViewBag.destinos = _destino.listado();
             return View(new Destino());
 
@@ -37,10 +41,11 @@ namespace ProjectAtipax.Controllers
         public IActionResult Create(Destino d)
         {
 
-            ViewBag.mensaje = _destino.agregar(d);
+            ViewBag.mensajeAgregar = _destino.agregar(d);
             ViewBag.categoriaLis = new SelectList(_categoria.listado(), "IdCategoria", "NombreCategoria", d.IdCategoria);
 
             ViewBag.hotelLis = new SelectList(_hotel.listado(), "idHotel", "nomHotel", d.idHotel);
+            ViewBag.toursList = new SelectList(_tour.listado(), "idTour", "descripcionTour", d.idTour);
             ViewBag.destinos = _destino.listado();
             return View(d);
         }
@@ -54,6 +59,8 @@ namespace ProjectAtipax.Controllers
             ViewBag.categoriaLis = new SelectList(_categoria.listado(), "IdCategoria", "NombreCategoria", d.IdCategoria);
 
             ViewBag.hotelLis = new SelectList(_hotel.listado(), "idHotel", "nomHotel", d.idHotel);
+            ViewBag.toursList = new SelectList(_tour.listado(), "idTour", "descripcionTour", d.idTour);
+
 
 
             return View(d);
@@ -62,9 +69,11 @@ namespace ProjectAtipax.Controllers
         public IActionResult Edit(Destino d)
         {
 
-            ViewBag.mensaje = _destino.actualizar(d);
+            ViewBag.mensajeActualizar = _destino.actualizar(d);
             ViewBag.categoriaLis = new SelectList(_categoria.listado(), "IdCategoria", "NombreCategoria", d.IdCategoria);
             ViewBag.hotelLis = new SelectList(_hotel.listado(), "idHotel", "nomHotel", d.idHotel);
+            ViewBag.toursList = new SelectList(_tour.listado(), "idTour", "descripcionTour", d.idTour);
+
             return View(d);
         }
         [Authorize(Roles = "Administrador")]

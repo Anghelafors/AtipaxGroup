@@ -11,7 +11,7 @@ namespace ProjectAtipax.Controllers
     public class ManteHotelController : Controller
     {
         IHotel _hotel;
-        ITour _tour;
+      
         public ManteHotelController()
         {
 

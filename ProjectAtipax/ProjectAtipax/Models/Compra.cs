@@ -28,6 +28,6 @@ namespace ProjectAtipax.Models
         [Display(Name = "N° Personas"), Required] public int cantidad { get; set; }
         [Display(Name = "Unidades"), Required] public decimal monto { get { return (precioHotel + precioTour) * cantidad; } }
 
-          
+       
     }
 }

@@ -6,26 +6,30 @@ using System.Data;
 using Newtonsoft.Json;
 
 using ProjectAtipax.Models;
+using ProjectAtipax.DAO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ProjectAtipax.Controllers
 {
+    [Authorize]
     public class AtipaxController : Controller
     {
+        viajesDAO filtro = new viajesDAO();
+
         public readonly IConfiguration _iconfig;
         public AtipaxController(IConfiguration iconfig)
         {
             _iconfig = iconfig;
         }
-
-        IEnumerable<Destino> catalogo()
+        IEnumerable<Destino> listadoSinParametro()
         {
             List<Destino> temporal = new List<Destino>();
-            using (SqlConnection cn = new SqlConnection(_iconfig["ConnectionStrings:cadena"]))
+            conexionDAO cn = new conexionDAO();
+            using (cn.getcn)
             {
-                cn.Open();
-                SqlCommand cmd = new SqlCommand(
-                "Select iddestino,pais,ciudad,nombrecategoria,precio " +
-                "from tb_destino d join tb_categorias c on d.idcategoria=c.idcategoria", cn);
+                cn.getcn.Open();
+                SqlCommand cmd = new SqlCommand("usp_consultarSin_destino", cn.getcn);
+                cmd.CommandType = CommandType.StoredProcedure;
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
@@ -34,32 +38,53 @@ namespace ProjectAtipax.Controllers
                         idDestino = dr.GetInt32(0),
                         pais = dr.GetString(1),
                         ciudad = dr.GetString(2),
-                        categoria = dr.GetString(3),
-                        precio = dr.GetDecimal(4)                     
+                        nomHotel = dr.GetString(3),
+
+                        categoriaHotel = dr.GetString(4),
+                        precioHotel = dr.GetDecimal(5),
+
+                        NombreCategoria = dr.GetString(6),
+                        descripcionTour = dr.GetString(7),
+                        precioTour = dr.GetDecimal(8),
+       
+                        UnidadesEnExistencia = dr.GetInt16(9)
                     });
                 }
-                cn.Close();
+                cn.getcn.Close();
             }
             return temporal;
         }
+      
+        [Authorize(Roles = "Cliente")]
+        public IActionResult Portal(string pais = "")
+        {
+            SqlParameter[] parametros = new SqlParameter[]
+              {
+                new SqlParameter("@pa",pais),
+              };
 
-            if (HttpContext.Session.GetString("canasta") == null)
+           if (HttpContext.Session.GetString("canasta") == null)
             {
                 HttpContext.Session.SetString("canasta", JsonConvert.SerializeObject(new List<Compra>()));
             }
 
 
+            return View(filtro.listado("usp_consultar_destino", parametros));
+
+
+        }
+        [Authorize(Roles = "Cliente")]
         public IActionResult Seleccionar(int id = 0)
         {
             //buscar el producto por id
-            Destino reg = catalogo().FirstOrDefault(p => p.idDestino == id);
+            Destino reg = listadoSinParametro().FirstOrDefault(p => p.idDestino == id);
             return View(reg);
         }
         [HttpPost]
         public IActionResult Seleccionar(int codigo, int cantidad)
         {
             //buscar el producto por su codigo
-            Destino reg = catalogo().FirstOrDefault(p => p.idDestino == codigo);
+           Destino reg = listadoSinParametro().FirstOrDefault(p => p.idDestino == codigo);
 
             //definir una Compra y almacenar los datos 
             Compra it = new Compra()
@@ -67,9 +92,14 @@ namespace ProjectAtipax.Controllers
                 codigo = codigo,
                 pais = reg.pais,
                 ciudad = reg.ciudad,
-                categoria = reg.categoria,
-                precio = reg.precio,
-                cantidad = cantidad
+                nomHotel= reg.nomHotel,
+                categoriaHotel= reg.categoriaHotel,
+                precioHotel = reg.precioHotel,
+                NombreCategoria= reg.NombreCategoria,
+                descripcionTour =reg.descripcionTour,
+                precioTour=reg.precioTour,
+                UnidadesEnExistencia= reg.UnidadesEnExistencia,
+                cantidad= cantidad
             };
 
             //deserializar el Session canasta para almacenar it
@@ -83,6 +113,7 @@ namespace ProjectAtipax.Controllers
             ViewBag.mensaje = $"Se ha registrado el destino{reg.pais}";
             return View(reg);
         }
+      [Authorize(Roles = "Cliente")]
 
         public ActionResult Resumen()
         {
@@ -91,10 +122,10 @@ namespace ProjectAtipax.Controllers
                          HttpContext.Session.GetString("canasta"));
             return View(temporal);
         }
-
-        public IActionResult Delete(int id)
+        
+       public IActionResult Delete(int id)
         {
-            //deserializar
+            
             List<Compra> temporal = JsonConvert.DeserializeObject<List<Compra>>(
                          HttpContext.Session.GetString("canasta"));
 
@@ -104,13 +135,13 @@ namespace ProjectAtipax.Controllers
 
             return RedirectToAction("Resumen");
         }
-
+        
         public IActionResult Comprar()
         {
             //enviamos a vista un nuevo Cliente para el pedido
             return View(new Cliente());
         }
-
+        
         [HttpPost]
         public IActionResult Comprar(Cliente reg)
         {
@@ -125,11 +156,14 @@ namespace ProjectAtipax.Controllers
                     SqlCommand cmd = new SqlCommand("usp_agrega_pedido", cn, tr);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@idpedido", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    cmd.Parameters.AddWithValue("@nom", reg.nombre);
+                    cmd.Parameters.AddWithValue("@apePat", reg.apePaterno);
+                    cmd.Parameters.AddWithValue("@apeMat", reg.apeMaterno);
                     cmd.Parameters.AddWithValue("@dni", reg.dni);
-                    cmd.Parameters.AddWithValue("@nombre", reg.nombre);
+                    cmd.Parameters.AddWithValue("@fono", reg.telefono);
                     cmd.Parameters.AddWithValue("@email", reg.email);
                     cmd.ExecuteNonQuery();
-                    int idpedido = (int)cmd.Parameters["@idpedido"].Value; //recupero el valor @idpedido
+                    int idpedido = (int)cmd.Parameters["@idpedido"].Value; 
 
                     List<Compra> temporal = JsonConvert.DeserializeObject<List<Compra>>(
                             HttpContext.Session.GetString("canasta"));
@@ -152,13 +186,13 @@ namespace ProjectAtipax.Controllers
                         cmd.ExecuteNonQuery();
                     }
 
-                    tr.Commit(); //si todo esta OK
+                    tr.Commit(); 
                     mensaje = $"Se ha registrado el pedido {idpedido}";
                 }
                 catch (SqlException ex)
                 {
                     mensaje = ex.Message;
-                    tr.Rollback(); //deshacer el proceso
+                    tr.Rollback(); 
                 }
                 finally { cn.Close(); }
             }

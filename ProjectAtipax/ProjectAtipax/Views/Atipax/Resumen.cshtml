@@ -1,1 +1,112 @@
-﻿
+﻿@model IEnumerable<ProjectAtipax.Models.Compra>
+
+@{
+    ViewData["Title"] = "Resumen";
+}
+<link href="~/css/styleAtipax.css" rel="stylesheet" />
+<h1>Resumen de su compra</h1>
+
+<div class ="tablaResumen">
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.codigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pais)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ciudad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nomHotel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.categoriaHotel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.precioHotel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreCategoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descripcionTour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.precioTour)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.UnidadesEnExistencia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.monto)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.codigo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pais)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ciudad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nomHotel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.categoriaHotel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.precioHotel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreCategoria)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descripcionTour)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.precioTour)
+                </td>
+     
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnidadesEnExistencia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cantidad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.monto)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id=item.codigo })
+                </td>
+            </tr>
+        }   <!--agregar el total del monto-->
+        <tr>
+            <td colspan="8">Monto del Pedido</td>
+            <td>@Model.Sum(c=>c.monto)</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+
+<div class="botonesResumen">
+    <a asp-action="Portal" class="btn btn-primary">Ir a la Tienda</a>
+    <a asp-action="Comprar" class="btn btn-primary">Registrar Compra</a>
+</div>
+

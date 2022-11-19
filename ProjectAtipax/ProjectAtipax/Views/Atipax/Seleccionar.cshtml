@@ -1,1 +1,93 @@
-﻿
+﻿@model ProjectAtipax.Models.Destino
+
+@{
+    ViewData["Title"] = "Seleccionar";
+}
+
+<link href="~/css/styleAtipax.css" rel="stylesheet" />
+
+    <h4>Detalle del Destino</h4>
+<div class="cajaTodo">
+
+    
+        <div class="cajaDestino">
+                <div>
+                @Html.DisplayNameFor(model => model.idDestino)    :       @Html.DisplayFor(model => model.idDestino)
+         
+                </div>
+                <div>
+                @Html.DisplayNameFor(model => model.pais)         :       @Html.DisplayFor(model => model.pais)
+           
+                
+                </div>
+                <div>
+                @Html.DisplayNameFor(model => model.ciudad)       :        @Html.DisplayFor(model => model.ciudad)
+            
+               
+            </div>
+                <div>
+                @Html.DisplayNameFor(model => model.UnidadesEnExistencia)      :    @Html.DisplayFor(model => model.UnidadesEnExistencia)
+            
+               
+                </div>
+        </div>
+         <div class="cajaHotel">
+                <div>
+                @Html.DisplayNameFor(model => model.nomHotel)           :      @Html.DisplayFor(model => model.nomHotel)
+            
+                
+                </div>
+
+                    <div>
+                @Html.DisplayNameFor(model => model.categoriaHotel)     :       @Html.DisplayFor(model => model.categoriaHotel)
+            
+               
+                    </div>
+
+                        <div>
+                @Html.DisplayNameFor(model => model.precioHotel)         :        @Html.DisplayFor(model => model.precioHotel)
+            
+                
+                            </div>
+                            <div>
+                @Html.DisplayNameFor(model => model.NombreCategoria)     :         @Html.DisplayFor(model => model.NombreCategoria)
+           
+              
+                                </div>
+        </div>
+        <div class="cajaTour">
+                <div>
+                    @Html.DisplayNameFor(model => model.descripcionTour)           :         @Html.DisplayFor(model => model.descripcionTour)
+           
+               
+                </div>
+                <div>
+                @Html.DisplayNameFor(model => model.precioTour)         :          @Html.DisplayFor(model => model.precioTour)
+           
+              
+                </div>
+        </div>
+
+
+<div class="cajaLlenar">
+    <form action="Seleccionar" method="post">
+        @Html.Hidden("codigo", Model.idDestino)
+        <div class="">
+            <label> Cantidad de Personas:</label>
+            <div class="boxCantidad">@Html.TextBox("cantidad", 1)</div>
+                <div class="boxBotones">
+                <input type="submit" value="Agregar" class="btn btn-primary" />
+                <a asp-action="Portal" class="btn btn-primary">Volver</a>
+                </div>
+            </div>
+    </form>
+    <div>
+        @ViewBag.mensaje
+    </div>
+
+    <p>
+        <a asp-action="Resumen" class="btn btn-danger">Comprar </a>
+    </p>
+</div>
+</div>
+

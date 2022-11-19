@@ -13,14 +13,10 @@ idTour char(5) not null,*/
 
         [Display(Name = "Código Hotel"), Required] public int idHotel { get; set; }
         [Display(Name = "Nombre del Hotel"), Required] public String nomHotel { get; set; }
-        [Display(Name = "Categoría"), Required] public String categoria { get; set; }
+        [Display(Name = "Categoría"), Required] public String categoriaHotel { get; set; }
         [Display(Name = "Precio"), Required] public Decimal precioHotel { get; set; }
-        [Display(Name = "Descripción"), Required] public String descripcion { get; set; }
-        [Display(Name = "Código Tour"), Required] public int idTour { get; set; }
+        [Display(Name = "Descripción"), Required] public String descripcionHotel { get; set; }
 
-        public Hotel()
-        {
-
-
-        }
+ 
     }
+}

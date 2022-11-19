@@ -16,13 +16,12 @@ namespace ProjectAtipax.DAO
                 try
                 {
                     SqlCommand cmd = new SqlCommand(
-                    "exec usp_agregar_hotel @idHo,@nom,@cate,@pre,@des,@idTo", cn.getcn);
+                    "exec usp_agregar_hotel @idHo,@nom,@cate,@pre,@des", cn.getcn);
                     cmd.Parameters.AddWithValue("@idHo", h.idHotel);
                     cmd.Parameters.AddWithValue("@nom", h.nomHotel);
-                    cmd.Parameters.AddWithValue("@cate", h.categoria);
+                    cmd.Parameters.AddWithValue("@cate", h.categoriaHotel);
                     cmd.Parameters.AddWithValue("@pre", h.precioHotel);
-                    cmd.Parameters.AddWithValue("@des", h.descripcion);
-                    cmd.Parameters.AddWithValue("@idTo", h.idTour);
+                    cmd.Parameters.AddWithValue("@des", h.descripcionHotel);
 
                     cmd.ExecuteNonQuery();
                     mensaje = "Se ha registrado correctamente";
@@ -58,10 +57,9 @@ namespace ProjectAtipax.DAO
                     {
                         idHotel = dr.GetInt32(0),
                         nomHotel = dr.GetString(1),
-                        categoria = dr.GetString(2),
+                        categoriaHotel = dr.GetString(2),
                         precioHotel = dr.GetDecimal(3),
-                        descripcion = dr.GetString(4),
-                        idTour = dr.GetInt32(5)
+                        descripcionHotel = dr.GetString(4)
 
                     });
                 }
@@ -79,13 +77,12 @@ namespace ProjectAtipax.DAO
                 try
                 {
                     SqlCommand cmd = new SqlCommand(
-                    "exec usp_actualizar_hotel @idHo,@nom,@cate,@pre,@des,@idTo", cn.getcn);
+                    "exec usp_actualizar_hotel @idHo,@nom,@cate,@pre,@des", cn.getcn);
                     cmd.Parameters.AddWithValue("@idHo", h.idHotel);
                     cmd.Parameters.AddWithValue("@nom", h.nomHotel);
-                    cmd.Parameters.AddWithValue("@cate", h.categoria);
+                    cmd.Parameters.AddWithValue("@cate", h.categoriaHotel);
                     cmd.Parameters.AddWithValue("@pre", h.precioHotel);
-                    cmd.Parameters.AddWithValue("@des", h.descripcion);
-                    cmd.Parameters.AddWithValue("@idTo", h.idTour);
+                    cmd.Parameters.AddWithValue("@des", h.descripcionHotel);
 
                     cmd.ExecuteNonQuery();
                     mensaje = "Se ha actualizado correctamente";
