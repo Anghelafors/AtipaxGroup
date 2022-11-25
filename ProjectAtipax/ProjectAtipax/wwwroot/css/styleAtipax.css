@@ -245,9 +245,9 @@ footer h4 {
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 .parcialEditar {
-    margin-top: 8px;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 .createUno {
     margin-left: 80px;
@@ -357,15 +357,84 @@ footer h4 {
 
 /*style de seleccionar*/
 .cajaTodo{
-    display:flex;
+  margin-top: 130px;
+    width: 80%;
+    
+    margin-left: 150px;
+    display: flex;
+  
+   
+}
+.fondoSele {
+    height: 600px;
+    background-image: url(/img/fondo.jpg);
+    background-size: cover;
+}
+.fondoSele h4{
+    font-size: 40px;
+    padding-top:60px;
+}
 
-    justify-content: space-between;
+.btnBoto {
+    padding-top: 10px;
+    margin-left: 20px;
 }
-.cajaLlenar {
-    width: 50%;
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+
+.btnCompra {
+    padding-top: 20px;
+    margin-left: 60px;
 }
-.cajaSeleccion {
+/*.cajaLlenar {
     width: 30%;
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+.cantidad{
+    display:flex;
+    flex-direction:row;
+}
+
+.cajaDestino {
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    background-color: darkgray;
+    width: 30%;
+    height: 150px;
+}
+.cajaHotel {
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    background-color: darkgray;
+    width: 30%;
+}
+.cajaTour {
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    background-color: darkgray;
+    width: 30%;
+
+
+}
+    **************/
+/*style para comprar*/
+.boxComprar {
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    width: 50%;
+    margin-left: 370px;
+    margin-top: 60px;
+}}
+.formCom{
+    margin-left: 10px;
+    padding-left:10px;
+}
+.btCom{
+    margin-left: 80px;
+}
+/*style para portal*/
+.espacio {
+    padding-left: 10px;
+}
+
+
+/*style para resumen */
+
+.tablaResumen {
+    width: 90%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
 }

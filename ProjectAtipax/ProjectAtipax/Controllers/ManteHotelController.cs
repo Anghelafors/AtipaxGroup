@@ -49,13 +49,13 @@ namespace ProjectAtipax.Controllers
         public IActionResult Edit(Hotel h)
         {
 
-            ViewBag.mensaje = _hotel.actualizar(h);
+            ViewBag.mensajeEditar = _hotel.actualizar(h);
             return View(h);
         }
         [Authorize(Roles = "Administrador")]
         public IActionResult Delete(int id)
         {
-            _hotel.eliminar(id);
+          _hotel.eliminar(id);
 
 
             return RedirectToAction("Create", "ManteHotel");

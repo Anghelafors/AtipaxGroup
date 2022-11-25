@@ -8,7 +8,7 @@ namespace ProjectAtipax.DAO
     {
         public string actualizar(Categoria c)
         {
-            string mensaje = "";
+            string mensajeEditar = "";
             conexionDAO cn = new conexionDAO();
             using (cn.getcn)
             {
@@ -16,16 +16,15 @@ namespace ProjectAtipax.DAO
                 try
                 {
                     SqlCommand cmd = new SqlCommand(
-                    "exec usp_actualizar_categoria @idCa,@nom", cn.getcn);
-                    cmd.Parameters.AddWithValue("@idTo", c.IdCategoria);
+                    "exec usp_actualizar_categoria @nom", cn.getcn);
                     cmd.Parameters.AddWithValue("@nom", c.NombreCategoria);
                     cmd.ExecuteNonQuery();
-                    mensaje = "Se ha actualizado correctamente";
+                    mensajeEditar = "Se ha actualizado correctamente";
                 }
-                catch (SqlException ex) { mensaje = ex.Message; }
+                catch (SqlException ex) { mensajeEditar = ex.Message; }
                 finally { cn.getcn.Close(); }
             }
-            return mensaje;
+            return mensajeEditar;
         }
 
         public string agregar(Categoria c)
@@ -39,7 +38,7 @@ namespace ProjectAtipax.DAO
                 {
                     SqlCommand cmd = new SqlCommand(
                     "exec usp_agregar_categoria @idCa,@nom", cn.getcn);
-                    cmd.Parameters.AddWithValue("@idTo", c.IdCategoria);
+                    cmd.Parameters.AddWithValue("@idCa", c.IdCategoria);
                     cmd.Parameters.AddWithValue("@nom", c.NombreCategoria);
                     cmd.ExecuteNonQuery();
                     mensaje = "Se ha registrado correctamente";
@@ -57,7 +56,7 @@ namespace ProjectAtipax.DAO
 
         public string eliminar(object obj)
         {
-            string mensaje = "";
+            string mensajeEliminar = "";
             conexionDAO cn = new conexionDAO();
             using (cn.getcn)
             {
@@ -70,12 +69,12 @@ namespace ProjectAtipax.DAO
 
                     cmd.Parameters.AddWithValue("@idCa", obj);
                     cmd.ExecuteNonQuery();
-
+                    mensajeEliminar = "Se ha eliminado correctamente";
                 }
-                catch (SqlException ex) { mensaje = ex.Message; }
+                catch (SqlException ex) { mensajeEliminar = ex.Message; }
                 finally { cn.getcn.Close(); }
             }
-            return mensaje;
+            return mensajeEliminar;
         }
 
         public IEnumerable<Categoria> listado()

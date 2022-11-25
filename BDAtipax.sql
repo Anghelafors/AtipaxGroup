@@ -31,22 +31,22 @@ insert into tb_usuario values(2,'cliente@gmail.com','cliente',2)
 go
 */
 create table tb_tour(
-idTour int primary key not null ,
+idTour int primary key IDENTITY(1,1),
 precioTour decimal not null,
 descripcionTour nvarchar(100) not null
 )
 go
 
-insert into tb_tour values(1,0,'Sin tour')
-insert into tb_tour values(2,300,'medio dia')
-insert into tb_tour values(3,100,'city tour')
-insert into tb_tour values(4,100,'full day')
+insert into tb_tour values(0,'Sin tour')
+insert into tb_tour values(300,'medio dia')
+insert into tb_tour values(100,'city tour')
+insert into tb_tour values(100,'full day')
 
 go
 
 
 create  table tb_hotel(
-idHotel int primary key not null , 
+idHotel int primary key IDENTITY(1,1) , 
 nomHotel nvarchar(20) not null,
 categoriaHotel nvarchar(15) not null,
 precioHotel decimal not null,
@@ -55,32 +55,32 @@ descripcionHotel nvarchar(50) not null
 )
 go
 
-insert into tb_hotel values(1,'Xcaret','5 estrellas',0,'Semi completo')
-insert into tb_hotel values(2,'Sheraton','5 estrellas',150,'Completo')
-insert into tb_hotel values(3,'Marriot','4 estrellas',140,'Semi completo')
+insert into tb_hotel values('Xcaret','5 estrellas',0,'Semi completo')
+insert into tb_hotel values('Sheraton','5 estrellas',150,'Completo')
+insert into tb_hotel values('Marriot','4 estrellas',140,'Semi completo')
 
 create table tb_categorias(
-IdCategoria int primary key not null,
+IdCategoria int primary key IDENTITY(1,1),
 NombreCategoria varchar(15) not null
 )
 
-insert into tb_categorias values(1,'Internacionales')
-insert into tb_categorias values(2,'Nacionales')
-insert into tb_categorias values(3,'Europa')
+insert into tb_categorias values('Internacionales')
+insert into tb_categorias values('Nacionales')
+insert into tb_categorias values('Europa')
 
 create table tb_destino(
-idDestino int primary key not null,
+idDestino int primary key IDENTITY(1,1),
 pais nvarchar(40) not null,
 ciudad nvarchar(40) not null,
-idHotel int not null,
-IdCategoria int not null,
-idTour int not null,
+idHotel int ,
+IdCategoria int ,
+idTour int ,
 UnidadesEnExistencia smallint not null,
 foreign key(idHotel) references tb_hotel(idHotel),
 foreign key(IdCategoria) references tb_categorias(IdCategoria),
 foreign key(idTour) references tb_tour(idTour)
 )
-insert into tb_destino values(1,'España','Madrid',2,3,4,2)
+insert into tb_destino values('España','Madrid',2,3,4,2)
 
 --FALTA TODA ESAS TABLAS
 create table tb_pedidos(
@@ -160,11 +160,11 @@ create procedure usp_tour_listar
 	go
 
 create procedure usp_agregar_tour
-@idTo int,
+
 @pre decimal,
 @des varchar(100)
 As
-Insert tb_tour values (@idTo,@pre,@des)
+Insert tb_tour values (@pre,@des)
 go
 
 
@@ -194,13 +194,13 @@ go
 	go
 
 create or alter procedure usp_agregar_hotel
-@idHo int,
+
 @nom varchar(20),
 @cate varchar(15),
 @pre decimal,
 @des varchar(50)
 As
-Insert tb_hotel values (@idHo,@nom,@cate,@pre,@des)
+Insert tb_hotel values (@nom,@cate,@pre,@des)
 go
 
 
@@ -233,7 +233,6 @@ select * from tb_destino
 go
 
 create or alter procedure usp_agregar_destino
-@idDes int,
 @pais varchar(40),
 @ciu varchar(40),
 @idHo int,
@@ -241,7 +240,7 @@ create or alter procedure usp_agregar_destino
 @idTo int,
 @uni smallint
 As
-Insert tb_destino values (@idDes,@pais,@ciu,@idHo,@idCate,@idTo,@uni)
+Insert tb_destino values (@pais,@ciu,@idHo,@idCate,@idTo,@uni)
 go
 
 
@@ -275,10 +274,10 @@ go
 
 
 create procedure usp_agregar_categoria
-@idCa int,
+
 @nom varchar(15)
 As
-Insert tb_categorias values (@idCa,@nom)
+Insert tb_categorias values (@nom)
 go
 
 

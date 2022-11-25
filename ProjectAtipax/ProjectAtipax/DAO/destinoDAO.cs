@@ -8,7 +8,7 @@ namespace ProjectAtipax.DAO
     {
         public string agregar(Destino d)
         {
-            string mensajeAgregar = "";
+            string mensaje = "";
             conexionDAO cn = new conexionDAO();
             using (cn.getcn)
             {
@@ -16,8 +16,7 @@ namespace ProjectAtipax.DAO
                 try
                 {
                     SqlCommand cmd = new SqlCommand(
-                    "exec usp_agregar_destino @idDes,@pais,@ciu,@idHo,@idCate,@idTo,@uni", cn.getcn);
-                    cmd.Parameters.AddWithValue("@idDes", d.idDestino);
+                    "exec usp_agregar_destino @pais,@ciu,@idHo,@idCate,@idTo,@uni", cn.getcn);
                     cmd.Parameters.AddWithValue("@pais", d.pais);
                     cmd.Parameters.AddWithValue("@ciu", d.ciudad);
                     cmd.Parameters.AddWithValue("@idHo", d.idHotel);
@@ -29,12 +28,12 @@ namespace ProjectAtipax.DAO
 
 
                     cmd.ExecuteNonQuery();
-                    mensajeAgregar = "Se ha registrado correctamente";
+                    mensaje = "Se ha registrado correctamente";
                 }
-                catch (SqlException ex) { mensajeAgregar = ex.Message; }
+                catch (SqlException ex) { mensaje = ex.Message; }
                 finally { cn.getcn.Close(); }
             }
-            return mensajeAgregar;
+            return mensaje;
         }
 
         public Destino buscar(int id)
@@ -74,7 +73,7 @@ namespace ProjectAtipax.DAO
         }
         public string actualizar(Destino d)
         {
-            string mensajeActualizar = "";
+            string mensajeEditar = "";
             conexionDAO cn = new conexionDAO();
             using (cn.getcn)
             {
@@ -94,17 +93,17 @@ namespace ProjectAtipax.DAO
 
 
                     cmd.ExecuteNonQuery();
-                    mensajeActualizar = "Se ha actualizado correctamente";
+                    mensajeEditar = "Se ha actualizado correctamente";
                 }
-                catch (SqlException ex) { mensajeActualizar = ex.Message; }
+                catch (SqlException ex) { mensajeEditar = ex.Message; }
                 finally { cn.getcn.Close(); }
             }
-            return mensajeActualizar;
+            return mensajeEditar;
         }
 
         public string eliminar(object obj)
         {
-            string mensaje = "";
+            string mensajeEliminar = "";
             conexionDAO cn = new conexionDAO();
             using (cn.getcn)
             {
@@ -117,12 +116,12 @@ namespace ProjectAtipax.DAO
 
                     cmd.Parameters.AddWithValue("@idDe", obj);
                     cmd.ExecuteNonQuery();
-
+                    mensajeEliminar = "Se ha eliminado correctamente";
                 }
-                catch (SqlException ex) { mensaje = ex.Message; }
+                catch (SqlException ex) { mensajeEliminar = ex.Message; }
                 finally { cn.getcn.Close(); }
             }
-            return mensaje;
+            return mensajeEliminar;
         }
     }
 

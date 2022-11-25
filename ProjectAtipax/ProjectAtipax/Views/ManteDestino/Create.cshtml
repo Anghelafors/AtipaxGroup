@@ -6,14 +6,15 @@
 }
 
 <h1 class="tituloMantenimiento">Mantenimiento Destino</h1>
-@if (@ViewBag.mensajeAgregar != null)
+@if (@ViewBag.mensaje != null)
 {
-    <div class="alert alert-primary" role="alert">
-        @ViewBag.mensajeAgregar
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        @ViewBag.mensaje
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
     </div>
 }
+
 
 
 <div class="masterDivision">
@@ -22,11 +23,7 @@
         <div class="formulario">
         <form asp-action="Create" class="row g-3">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="col-md-5">
-                <label asp-for="idDestino" class="control-label"></label>
-                <input asp-for="idDestino" class="form-control" />
-                <span asp-validation-for="idDestino" class="text-danger"></span>
-            </div>
+           
             <div class="col-md-5">
                 <label asp-for="pais" class="control-label"></label>
                 <input asp-for="pais" class="form-control" />

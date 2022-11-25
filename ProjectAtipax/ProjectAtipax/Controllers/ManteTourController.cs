@@ -52,7 +52,7 @@ namespace ProjectAtipax.Controllers
         [Authorize(Roles = "Administrador")]
         public IActionResult Delete(int id)
         {
-            ViewBag.mensajeEliminar = _tour.eliminar(id);
+             _tour.eliminar(id);
 
 
             return RedirectToAction("Create", "ManteTour");

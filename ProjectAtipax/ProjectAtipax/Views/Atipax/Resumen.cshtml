@@ -4,7 +4,7 @@
     ViewData["Title"] = "Resumen";
 }
 <link href="~/css/styleAtipax.css" rel="stylesheet" />
-<h1>Resumen de su compra</h1>
+<h1>Detalle de la compra</h1>
 
 <div class ="tablaResumen">
 <table class="table">
@@ -97,7 +97,7 @@
             </tr>
         }   <!--agregar el total del monto-->
         <tr>
-            <td colspan="8">Monto del Pedido</td>
+            <td colspan="8">Total:</td>
             <td>@Model.Sum(c=>c.monto)</td>
         </tr>
     </tbody>

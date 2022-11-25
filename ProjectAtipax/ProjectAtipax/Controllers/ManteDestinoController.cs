@@ -41,7 +41,7 @@ namespace ProjectAtipax.Controllers
         public IActionResult Create(Destino d)
         {
 
-            ViewBag.mensajeAgregar = _destino.agregar(d);
+            ViewBag.mensaje = _destino.agregar(d);
             ViewBag.categoriaLis = new SelectList(_categoria.listado(), "IdCategoria", "NombreCategoria", d.IdCategoria);
 
             ViewBag.hotelLis = new SelectList(_hotel.listado(), "idHotel", "nomHotel", d.idHotel);
@@ -69,7 +69,7 @@ namespace ProjectAtipax.Controllers
         public IActionResult Edit(Destino d)
         {
 
-            ViewBag.mensajeActualizar = _destino.actualizar(d);
+            ViewBag.mensajeEditar = _destino.actualizar(d);
             ViewBag.categoriaLis = new SelectList(_categoria.listado(), "IdCategoria", "NombreCategoria", d.IdCategoria);
             ViewBag.hotelLis = new SelectList(_hotel.listado(), "idHotel", "nomHotel", d.idHotel);
             ViewBag.toursList = new SelectList(_tour.listado(), "idTour", "descripcionTour", d.idTour);
@@ -79,7 +79,7 @@ namespace ProjectAtipax.Controllers
         [Authorize(Roles = "Administrador")]
         public IActionResult Delete(int id)
         {
-            _destino.eliminar(id);
+             _destino.eliminar(id);
 
 
             return RedirectToAction("Create", "ManteDestino");

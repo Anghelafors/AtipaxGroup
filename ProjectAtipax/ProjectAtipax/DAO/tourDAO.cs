@@ -18,8 +18,7 @@ namespace ProjectAtipax.DAO
                 try
                 {
                     SqlCommand cmd = new SqlCommand(
-                    "exec usp_agregar_tour @idTo,@pre,@des", cn.getcn);
-                    cmd.Parameters.AddWithValue("@idTo", t.idTour);
+                    "exec usp_agregar_tour @pre,@des", cn.getcn);
                     cmd.Parameters.AddWithValue("@pre", t.precioTour);
                     cmd.Parameters.AddWithValue("@des", t.descripcionTour);
 
@@ -109,7 +108,7 @@ namespace ProjectAtipax.DAO
 
                     cmd.Parameters.AddWithValue("@idTo", obj);
                     cmd.ExecuteNonQuery();
-                    mensajeEliminar = "El Tour se ha eliminado";
+                    mensajeEliminar = "Se ha eliminado correctamente";
 
                 }
                 catch (SqlException ex) { mensajeEliminar = ex.Message; }

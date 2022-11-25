@@ -8,9 +8,9 @@
 <div class="editarCuadro">
     <h2>Editar Hotel</h2>
 
-    @if (@ViewBag.mensajeEliminar != null)
+    @if (@ViewBag.mensajeEditar != null)
     {
-        <div class="alert alert-primary" role="alert">
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
             @ViewBag.mensajeEditar
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 

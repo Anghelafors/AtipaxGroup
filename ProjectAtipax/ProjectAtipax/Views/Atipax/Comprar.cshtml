@@ -5,44 +5,45 @@
 }
 
 
-<h1>¡Realice su compra!</h1>
 
 
-<div class="row boxComprar">
-    <div class="col-md-4">
-        <form asp-action="Comprar">
+
+<div class="">
+    <div class="boxComprar">
+        <h1 style="text-align:center">¡Llene sus datos!</h1>
+        <form asp-action="Comprar" class="row g-2 formCom">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-             <div class="form-group">
+            <div class="col-auto">
                 <label asp-for="nombre" class="control-label"></label>
                 <input asp-for="nombre" class="form-control" />
                 <span asp-validation-for="nombre" class="text-danger"></span>
             </div>
-             <div class="form-group">
+            <div class="col-auto">
                 <label asp-for="apePaterno" class="control-label"></label>
                 <input asp-for="apePaterno" class="form-control" />
                 <span asp-validation-for="apePaterno" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="col-auto">
                 <label asp-for="apeMaterno" class="control-label"></label>
                 <input asp-for="apeMaterno" class="form-control" />
                 <span asp-validation-for="apeMaterno" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="col-auto">
                 <label asp-for="dni" class="control-label"></label>
                 <input asp-for="dni" class="form-control" />
                 <span asp-validation-for="dni" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="col-auto">
                 <label asp-for="telefono" class="control-label"></label>
                 <input asp-for="telefono" class="form-control" />
                 <span asp-validation-for="telefono" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="col-auto">
                 <label asp-for="email" class="control-label"></label>
                 <input asp-for="email" class="form-control" />
                 <span asp-validation-for="email" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="col-auto btCom">
                 <input type="submit" value="Registrar" class="btn btn-primary" />
                 <a asp-action="Portal" class="btn btn-primary">Ir a la Tienda</a>
             </div>

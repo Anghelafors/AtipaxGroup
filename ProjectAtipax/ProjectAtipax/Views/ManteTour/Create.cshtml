@@ -6,19 +6,12 @@
 }
 
 <h1 class="tituloMantenimiento">Mantenimiento Tour</h1>
+
+
 @if (@ViewBag.mensaje != null)
 {
-    <div class="alert alert-primary" role="alert">
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
         @ViewBag.mensaje
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-
-    </div>
-}
-
-@if (@ViewBag.mensajeEliminar != null)
-{
-    <div class="alert alert-primary" role="alert">
-        @ViewBag.mensajeEliminar
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
     </div>
@@ -30,11 +23,7 @@
             <form asp-action="Create" class="row g-3">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                <div class="col-md-7">
-                    <label asp-for="idTour" class="form-label">Código:</label>
-                    <input asp-for="idTour" class="form-control" />
-                    <span asp-validation-for="idTour" class="text-danger"></span>
-                </div>
+                
                 <div class="col-md-7">
                     <label asp-for="precioTour" class="form-label">Precio:</label>
                     <input asp-for="precioTour" class="form-control" />
@@ -51,7 +40,7 @@
             </form>
         </div>
        
-
+        
 </div>
  
     <div class="listaDos">

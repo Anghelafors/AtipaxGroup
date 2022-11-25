@@ -7,10 +7,10 @@
 <div class="editarCuadro">
     <h2>Editar Destino</h2>
 
-    @if (@ViewBag.mensajeActualizar != null)
+    @if (@ViewBag.mensajeEditar != null)
     {
-        <div class="alert alert-primary" role="alert">
-            @ViewBag.mensajeActualizar
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            @ViewBag.mensajeEditar
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
         </div>

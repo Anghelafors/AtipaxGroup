@@ -16,8 +16,7 @@ namespace ProjectAtipax.DAO
                 try
                 {
                     SqlCommand cmd = new SqlCommand(
-                    "exec usp_agregar_hotel @idHo,@nom,@cate,@pre,@des", cn.getcn);
-                    cmd.Parameters.AddWithValue("@idHo", h.idHotel);
+                    "exec usp_agregar_hotel @nom,@cate,@pre,@des", cn.getcn);
                     cmd.Parameters.AddWithValue("@nom", h.nomHotel);
                     cmd.Parameters.AddWithValue("@cate", h.categoriaHotel);
                     cmd.Parameters.AddWithValue("@pre", h.precioHotel);
@@ -69,7 +68,7 @@ namespace ProjectAtipax.DAO
         }
         public string actualizar(Hotel h)
         {
-            string mensaje = "";
+            string mensajeEditar = "";
             conexionDAO cn = new conexionDAO();
             using (cn.getcn)
             {
@@ -85,17 +84,17 @@ namespace ProjectAtipax.DAO
                     cmd.Parameters.AddWithValue("@des", h.descripcionHotel);
 
                     cmd.ExecuteNonQuery();
-                    mensaje = "Se ha actualizado correctamente";
+                    mensajeEditar = "Se ha actualizado correctamente";
                 }
-                catch (SqlException ex) { mensaje = ex.Message; }
+                catch (SqlException ex) { mensajeEditar = ex.Message; }
                 finally { cn.getcn.Close(); }
             }
-            return mensaje;
+            return mensajeEditar;
         }
         public string eliminar(Object obj)
         {
 
-            string mensaje = "";
+            string mensajeEliminar = "";
             conexionDAO cn = new conexionDAO();
             using (cn.getcn)
             {
@@ -110,10 +109,10 @@ namespace ProjectAtipax.DAO
                     cmd.ExecuteNonQuery();
 
                 }
-                catch (SqlException ex) { mensaje = ex.Message; }
+                catch (SqlException ex) { mensajeEliminar = ex.Message; }
                 finally { cn.getcn.Close(); }
             }
-            return mensaje;
+            return mensajeEliminar;
         }
     }
 
