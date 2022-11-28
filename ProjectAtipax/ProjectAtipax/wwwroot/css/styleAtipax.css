@@ -320,13 +320,7 @@ footer h4 {
 
 /*estilos para eccommerce*/
 
-.portal {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 7px;
-    row-gap: 7px;
-   padding-bottom: 40px;
-}
+
 .registro {
     
     height: auto;
@@ -415,26 +409,67 @@ footer h4 {
 /*style para comprar*/
 .boxComprar {
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-    width: 50%;
+    width: 40%;
     margin-left: 370px;
     margin-top: 60px;
+    margin-bottom: 60px;
 }}
 .formCom{
+   padding-top: 30px;
     margin-left: 10px;
-    padding-left:10px;
+ 
 }
-.btCom{
-    margin-left: 80px;
+.btCom {
+    margin-left: 160px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.titCompra{
+    text-align: center;
+    margin-top: 10px;
+    color:cadetblue;
+
 }
 /*style para portal*/
-.espacio {
-    padding-left: 10px;
+
+.codDes{
+    visibility: hidden;
 }
 
-
+.alinear{
+    text-align: center;
+}
+.titul {
+    color: darkslateblue;
+    font-weight: 600;
+}
+.porCol{
+    margin-left: 70px;
+    margin-top:20px;
+}
+.caPo{
+    width: 30rem;
+}
 /*style para resumen */
+.hi {
+    visibility: hidden;
+}
 
-.tablaResumen {
-    width: 90%;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+.resCol{
+    margin-top: 30px;
+    margin-left: 110px;
+}
+.totalPagar {
+    margin-left: 600px;
+    width:30%;
+    margin-top: 10px;
+   
+}
+.botonesResumen{
+    margin-left: 570px;
+    margin-top: 15px;
+    margin-bottom:20px;
+}
+.caResu{
+    width: 30rem;
 }

@@ -110,7 +110,7 @@ namespace ProjectAtipax.Controllers
 
             //serializar
             HttpContext.Session.SetString("canasta", JsonConvert.SerializeObject(temporal));
-            ViewBag.mensaje = $"Se ha registrado el destino{reg.pais}";
+            ViewBag.mensaje = "Se ha registrado correctamente";
             return View(reg);
         }
       [Authorize(Roles = "Cliente")]
@@ -187,7 +187,7 @@ namespace ProjectAtipax.Controllers
                     }
 
                     tr.Commit(); 
-                    mensaje = $"Se ha registrado el pedido {idpedido}";
+                    mensaje = "Se ha registrado la compra";
                 }
                 catch (SqlException ex)
                 {
