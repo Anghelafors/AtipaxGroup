@@ -103,9 +103,9 @@ namespace ProjectAtipax.DAO
                 try
                 {
 
-                    SqlCommand cmd = new SqlCommand("exec usp_eliminar_tour @idTo", cn.getcn);
+                    SqlCommand cmd = new SqlCommand("exec usp_eliminar_hotel @idHo", cn.getcn);
 
-                    cmd.Parameters.AddWithValue("@idTo", obj);
+                    cmd.Parameters.AddWithValue("@idHo", obj);
                     cmd.ExecuteNonQuery();
 
                 }

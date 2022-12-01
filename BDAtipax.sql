@@ -85,7 +85,7 @@ insert into tb_destino values('España','Madrid',2,3,4,2)
 --FALTA TODA ESAS TABLAS
 create table tb_pedidos(
 	idpedido int primary key,
-	fpedido datetime default(getdate()),
+	fpedido date default(getdate()),
 	nombre varchar(100),
 	apePaterno varchar(100),
 	apeMaterno varchar(100),
@@ -316,4 +316,17 @@ select d.idDestino, d.pais, d.ciudad,h.nomHotel, h.categoriaHotel, h.precioHotel
 		             inner join tb_tour t on d.idTour = t.idTour
 					  inner join tb_categorias c on d.IdCategoria = c.IdCategoria
 
+go
+
+create or alter procedure usp_consultar_pedido_fecha
+@fe date
+as
+select p.idpedido, p.fpedido, p.nombre, p.apePaterno, p.apeMaterno, p.dni, p.telefono, p.email
+	from tb_pedidos p 
+					 
+	where p.fpedido=@fe
+go
+select*from tb_pedidos
+
+exec usp_consultar_pedido_fecha "2022-11-30"
 go

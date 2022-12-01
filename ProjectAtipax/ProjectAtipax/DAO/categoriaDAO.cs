@@ -37,8 +37,7 @@ namespace ProjectAtipax.DAO
                 try
                 {
                     SqlCommand cmd = new SqlCommand(
-                    "exec usp_agregar_categoria @idCa,@nom", cn.getcn);
-                    cmd.Parameters.AddWithValue("@idCa", c.IdCategoria);
+                    "exec usp_agregar_categoria @nom", cn.getcn);
                     cmd.Parameters.AddWithValue("@nom", c.NombreCategoria);
                     cmd.ExecuteNonQuery();
                     mensaje = "Se ha registrado correctamente";

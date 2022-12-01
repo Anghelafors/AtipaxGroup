@@ -378,33 +378,7 @@ footer h4 {
     padding-top: 20px;
     margin-left: 60px;
 }
-/*.cajaLlenar {
-    width: 30%;
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-}
-.cantidad{
-    display:flex;
-    flex-direction:row;
-}
-
-.cajaDestino {
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-    background-color: darkgray;
-    width: 30%;
-    height: 150px;
-}
-.cajaHotel {
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-    background-color: darkgray;
-    width: 30%;
-}
-.cajaTour {
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-    background-color: darkgray;
-    width: 30%;
-
-
-}
+/*
     **************/
 /*style para comprar*/
 .boxComprar {
@@ -413,14 +387,10 @@ footer h4 {
     margin-left: 370px;
     margin-top: 60px;
     margin-bottom: 60px;
-}}
-.formCom{
-   padding-top: 30px;
-    margin-left: 10px;
- 
 }
+
 .btCom {
-    margin-left: 160px;
+    padding-left: 50px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -430,9 +400,12 @@ footer h4 {
     color:cadetblue;
 
 }
+.formularioCompra {
+    padding-left: 8px;
+    margin-top: 70px;
+}
 /*style para portal*/
-
-.codDes{
+.codDes {
     visibility: hidden;
 }
 
@@ -472,4 +445,25 @@ footer h4 {
 }
 .caResu{
     width: 30rem;
+}
+
+/*STYLE PARA CONSULTA*/
+.tablaConsulta {
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    width: 80%;
+    
+    margin-left: 160px;
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+
+.formulaConsulta {
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    margin-top: 80px;
+    margin-left: 160px;
+    width: 80%;
+    padding: 20px;
+}
+.expandir{
+
 }
