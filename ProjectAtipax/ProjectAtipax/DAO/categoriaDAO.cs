@@ -16,7 +16,8 @@ namespace ProjectAtipax.DAO
                 try
                 {
                     SqlCommand cmd = new SqlCommand(
-                    "exec usp_actualizar_categoria @nom", cn.getcn);
+                    "exec usp_actualizar_categoria @idCa,@nom", cn.getcn);
+                    cmd.Parameters.AddWithValue("@idCa", c.IdCategoria);
                     cmd.Parameters.AddWithValue("@nom", c.NombreCategoria);
                     cmd.ExecuteNonQuery();
                     mensajeEditar = "Se ha actualizado correctamente";

@@ -1,35 +1,11 @@
-drop database  BDAtipax
+--drop database  BDAtipax
 create database BDAtipax
 use BDAtipax
 
-use master
 
 -- tables
 
-/*create table tb_roles
-(
- idRol int primary key not null,
- nombre varchar(50) not null
 
-  
-)
-
-create table tb_usuario
-(
- idUsuario int primary key not null,
- usuario varchar(20),
- pass varchar(15),
- idRol int not null,
- foreign key (idRol) references tb_roles(idRol)
-)
-
-insert into tb_roles values(1,'Administrador')
-insert into tb_roles values(2,'Cliente')
-
-insert into tb_usuario values(1,'admi@gmail.com','admi',1)
-insert into tb_usuario values(2,'cliente@gmail.com','cliente',2)
-go
-*/
 create table tb_tour(
 idTour int primary key IDENTITY(1,1),
 precioTour decimal not null,
@@ -58,6 +34,7 @@ go
 insert into tb_hotel values('Xcaret','5 estrellas',0,'Semi completo')
 insert into tb_hotel values('Sheraton','5 estrellas',150,'Completo')
 insert into tb_hotel values('Marriot','4 estrellas',140,'Semi completo')
+insert into tb_hotel values('Rialto','4 estrellas',140,'Semi completo')
 
 create table tb_categorias(
 IdCategoria int primary key IDENTITY(1,1),
@@ -81,8 +58,9 @@ foreign key(IdCategoria) references tb_categorias(IdCategoria),
 foreign key(idTour) references tb_tour(idTour)
 )
 insert into tb_destino values('España','Madrid',2,3,4,2)
+insert into tb_destino values('Perú','Lima',2,3,4,2)
+insert into tb_destino values('España','Barcelona',3,2,4,10)
 
---FALTA TODA ESAS TABLAS
 create table tb_pedidos(
 	idpedido int primary key,
 	fpedido date default(getdate()),
@@ -179,7 +157,7 @@ Update tb_tour
 Set  precioTour = @pre ,descripcionTour =@des
 Where idTour=@idTo
 go
-select * from tb_tour
+
 	
 create procedure usp_eliminar_tour
 @idTo int
@@ -309,6 +287,7 @@ select d.idDestino, d.pais, d.ciudad,h.nomHotel, h.categoriaHotel,t.descripcionT
 					 
 	where d.pais=@pa
 go
+
 create or alter procedure usp_consultarSin_destino
 as
 select d.idDestino, d.pais, d.ciudad,h.nomHotel, h.categoriaHotel, h.precioHotel , c.NombreCategoria,t.descripcionTour , t.precioTour, d.UnidadesEnExistencia 
@@ -326,7 +305,7 @@ select p.idpedido, p.fpedido, p.nombre, p.apePaterno, p.apeMaterno, p.dni, p.tel
 					 
 	where p.fpedido=@fe
 go
-select*from tb_pedidos
 
-exec usp_consultar_pedido_fecha "2022-11-30"
-go
+
+--exec usp_consultar_pedido_fecha "2022-12-01"
+--go
